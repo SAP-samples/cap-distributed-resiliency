@@ -1,3 +1,4 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cap-distributed-resiliency)](https://api.reuse.software/info/github.com/SAP-samples/cap-distributed-resiliency)
 
 # Distributed Resiliency for CAP applications
 This repository contains design patterns, code samples and step by step instructions to enable *Distributed Resiliency in CAP applications*. 
