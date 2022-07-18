@@ -69,7 +69,7 @@ The best design also requires operational excellence to ensure high availability
 #### [SAP Automation Pilot](https://help.sap.com/docs/AUTOMATION_PILOT)
 
 ## Known Issues
-Refer to different implementations Known Issues section
+There are different implementations, and some of them will not address the multi-region latency issues. Kindly refer to the known issues section of different implementations.
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/cap-distributed-resiliency/issues) in this repository if you find a bug or have questions about the content.
