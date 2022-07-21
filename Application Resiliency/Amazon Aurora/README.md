@@ -7,7 +7,7 @@ This repository contains code samples and step-by-step instructions to enable *D
 
 In this scenario, we are going to deploy the CAP applications to multiple regions with active-active setup. The Amazon Aurora Global Data Base Cluster is configured with cross-region read replica. Amazon Route 53 is used for routing the request to different regions subaccounts based on the maintained configurations.
 
-This use case is recommended for customers having SAP BTP subscriptions on AWS and building transactional CAP applications with data availability across the regions. This use case will not address the data latency issue across the regions and not recommended for real-time analytics solutions.
+This reference architecture is for building modern applications with data availability across the regions. This will not address the data latency issue across the regions and realtime analytics solutions.
 
 **Approximate RPO (Recovery Point Objective)**
 | Traffic Routing | Presentation/Web tier | Application tier | Data tier                                      |
