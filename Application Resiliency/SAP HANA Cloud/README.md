@@ -7,7 +7,7 @@ This repository contains code samples and step-by-step instructions to enable *D
 
 In this scenario, we are going to deploy CAP applications to multiple regions with an active-active setup. SAP HANA Cloud is configured with synchronous and asynchronous replicas on the availability zones (AZs) and Azure Traffic Manager is used for routing incoming requests to SAP BTP subaccounts across different regions based on the maintained configurations, which can performance-based, weighted or geo-based.
 
-This scenario is recommended for customers building modern applications and analytics solutions across their enterprise data with cloud-native scalability, speed, and performance. This will not address the data availability and latency use cases that require multi-region availability.
+This reference architecture is for building modern applications and analytics solutions across the enterprise data with cloud-native scalability, speed, and performance. This will not address the data availability and latency use cases that require multi-region availability.
 
 **Approximate RPO (Recovery Point Objective)**
 | Traffic Routing | Presentation / Web tier | Application tier | Data tier                                      |
