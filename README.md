@@ -41,13 +41,13 @@ We discuss the best practices and reference blueprints for specific resilient ap
 
 In this scenario, you will learn how to achieve the Distributed Resiliency on CAP application using SAP HANA Cloud Database & Azure traffic manager.
 
-This scenario is recommended for building modern applications and analytics solutions across all enterprise data with cloud-native scalability, speed, and performance. This will not address the data availability and latency use cases across the regions.
+This reference architecture is for building modern applications and analytics solutions across all enterprise data with cloud-native scalability, speed, and performance. This will not address the data availability and latency use cases across the regions.
 
 #### [Amazon Aurora (Read Replica) with Amazon Route 53](./Application%20Resiliency/Amazon%20Aurora/README.md)
 
 In this scenario, you will learn how to achieve the Distributed Resiliency of CAP applications using Amazon Aurora Database & Amazon Route 53.
 
-This scenario is recommended for building modern applications with data availability across the regions. This will not address the data latency issue across the regions and realtime analytics solutions.
+This reference architecture is for building modern applications with data availability across the regions. This will not address the data latency issue across the regions and realtime analytics solutions.
 
 ## Operational Resiliency Implementations
 The best design also requires operational excellence to ensure high availability and mitigate the downtime. The following implementations help for that.
