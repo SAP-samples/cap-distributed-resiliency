@@ -73,7 +73,7 @@ Subscriptions required in your SAP Business Technology Platform Account:
 | SAP Business Application Studio|  Standard (Application)                                |
 
 
-## Table of Contents
+## Setup and Configuration
 
 #### [Step 1: Setup SAP HANA Cloud - Availability Zones and Replicas](./tutorial/01-Setup%20SAP%20HANA%20Cloud%20HA/README.md)
 
@@ -104,9 +104,7 @@ GitHub: [High Availability of SAP Launchpad service](https://github.tools.sap/bt
 Blogpost: [Architecting Solutions on SAP BTP for High Availability](https://blogs.sap.com/2021/08/17/architecting-solutions-on-sap-btp-for-high-availability/) by [Murali Shanmugham](https://people.sap.com/muralidaran.shanmugham2)
 
 ## Known Issues
-This scenario will not address any multi-region latency issue, since the SAP HANA Cloud instance is running within one hyperscaler region. The application will access the database across regions, which may lead to latency issues.
-
-In SAP HANA Cloud, bi-directional multi-region replication is currently impossible, so we have to use the best possible solution of setting up two replicas (synchronous and asynchronous) in the same region.
+This scenario will not address any multi-region latency issue, since the SAP HANA Cloud instance is running in one hyperscaler region. The application will access the database across regions, which may lead to latency issues.
 
 ## How to obtain support
 
