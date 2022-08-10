@@ -29,4 +29,11 @@ The load balancing with JDBC is pretty native, provide with the connection param
 
 Spring provides a variation of DataSource, called AbstractRoutingDatasource. It can be used in place of standard DataSource implementations and enables a mechanism to determine which concrete DataSource to use for each operation at runtime. All you need to do is to extend it and to provide an implementation of an abstract determineCurrentLookupKey method. This is the place to implement your custom logic to determine the concrete DataSource. 
 
-Refer the [Technical Article](https://blogs.sap.com/2021/11/10/working-with-multiple-cds-data-stores-in-cap-ng-java/) for Working with multiple CDS Data Stores in CAP NG Java.
+Refer to [Technical Article](https://blogs.sap.com/2021/11/10/working-with-multiple-cds-data-stores-in-cap-ng-java/) for Working with multiple CDS Data Stores in CAP NG Java.
+
+## 5. Approximate Recovery Point Objective (RPO)
+A Recovery point objectives refer to company’s loss tolerance. The amount of data that can be lost before significant harm to the business occurs. 
+
+| Traffic Routing | Presentation/Web tier | Application tier | Data tier                                      |
+| --------------- | --------------------- | ----------------- | ---------------------------------------------- |
+|  Based on DNS Time-to-Live (TTL) of the Amazon  Route 53 profile. Setting a TTL of 60 or 120 seconds is a common choice for a rapid failover mechanism |Based on the Routing|Based on the Routing| Promoting an existing Replica takes less than 120 seconds, often less than 60 seconds and recreating primary instance takes less than 10 minutes |
