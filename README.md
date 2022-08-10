@@ -8,13 +8,13 @@ Resilience, or resilient software design, is about handling failures that occur 
 
 There are many different principles and patterns you can use to make your software resilient. It is, however, not always easy to find the combination that best fits your applications. The [Developing Resilient Apps on SAP BTP Guide](https://help.sap.com/viewer/eadaa45871804b4a974be865f627e791/Cloud/en-US/d1fe5fd8ecfb46c193221ebb991af3d7.html) gives an overview of the various options you have when developing applications and detailed information about the individual patterns you can use.
 
-#### High Availability at Platform and Services
+### High Availability at Platform and Services
 
 In the SAP Business Technology Platform, you can make use of the Availability Zones (AZ),  The Availability Zones (AZ) are single failure domains within a single geographical region and are separate physical locations with independent power, network, and cooling. Multiple AZs exist in one region and are connected through a low-latency network.
 
 The SAP BTP services such as SAP Launchpad and SAP HANA Cloud are deployed across multiple Availability zones (AZ), which improves the availability of service if there are issues with the infrastructure of one AZ.
 
-#### High Availability at Application Level
+### High Availability at Application Level
 
 When developing applications, we have to consider different aspects of the applications to support resiliency. There are different tiers while developing CAP applications. 
 
@@ -24,7 +24,7 @@ The **Application tier** is the heart of the application, where all the business
 
 The **Data tier** is located at the backend where the information provided is managed, stored, and retrieved when needed.  For high availability across multiple AWS Regions, you can set up Aurora global databases. Each Aurora global database spans multiple AWS Regions, enabling low latency global reads and disaster recovery from outages across an AWS Region.
 
-## Distributed Resiliency
+### Challenge
 Most of the applications can achieve high levels of resiliency with a standard Availability zones (AZ) setup, but these might not work in case of natural disaster, which usually on across regions or it can be a case of SAP BTP service upgrade across regions, where there will be an outage for few hours. 
 
 In such cases, it is recommended to run your application in active-active (Distributed Resiliency) across regions. This also helps to achieve different other objectives such as  
@@ -40,22 +40,7 @@ The conceptual solution diagram below shows a hybrid and multi-cloud architectur
 ![S1](./images/s1-a1.png )
 
 In this scenario, we are going to deploy the CAP applications to multiple regions with active-active setup. The Amazon Aurora Global Data Base Cluster is configured with cross-region read replica. Amazon Route 53 is used for routing the request to different region subaccounts based on the maintained configurations.
-
-## Challenge
-Failures in applications cannot be avoided. Therefore, the time between a failure and its correction, as well as the frequency of failures, must be reduced. 
-- Automatic Failover for CAP applications
-- Reducing Latency for CAP applications Globally (e.g. US users accessing CAP applications in Australia in a failover scenario)
-- Load balancing between CAP application tenants (increasing throughput of your tenant beyond scale-up capabilities)
-
-## Outcome
-
-A cloud native integration pattern that incorporates SAP BTP and AWS cloud platform to eliminate downtime, reduce global latency and increase throughput. The approach can be applied to other BTP services in same way. Check the [Further Reading Section](./README.md#furtherreading) for other examples.
-
-## Solution
-- Configuring Amazon Aurora Global Database 
-- Using your own domain for SAP CAP Application using the SAP Custom Domain Service
-- Configuring Amazon Route 53 and different Amazon Route 53 profiles to decouple connection information
-  
+ 
 ## Requirements
 
 The required systems and components are:
