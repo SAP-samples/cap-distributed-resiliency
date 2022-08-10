@@ -26,3 +26,10 @@ In application layer, there is a possibility by sending the writes to both the r
 
 **Cross region Active-Passive setup:** This is not possible due to current restriction on Multi region Replication. 
 By using SAP HANA Smart Data Integration (SDI), one side asynchronous replication is possible, but failover handling is difficult.
+
+## 3. Approximate RPO (Recovery Point Objective)
+A Recovery point objectives refer to a company’s loss tolerance. The amount of data that can be lost before significant harm to the business occurs. 
+
+| Traffic Routing | Presentation / Web tier | Application tier | Data tier                                      |
+| --------------- | --------------------- | ----------------- | ---------------------------------------------- |
+|Based on DNS Time-to-Live (TTL) of the Azure Traffic Manager profile plus an additional two minutes.  Minimum TTL config is possible with 1 second       | Based on the Routing      | Based on the Routing  | Recover from Backup takes less than 15 minutes. |
