@@ -22,7 +22,8 @@ The **Presentation/Web tier** is the user interface and communication layer of t
 
 The **Application tier** is the heart of the application, where all the business logic is used to process the information from the presentation tier. This tier is often developed using different buildpacks provided by the SAP BTP Cloud Foundry environment.  It also utilizes different services offered by the SAP Business Technology Platform. Running multiple application instances to increase the availability on this tier.
 
-The **Data tier** is located at the backend where the information provided is managed, stored, and retrieved when needed.  For high availability across multiple AWS Regions, you can set up Aurora global databases. Each Aurora global database spans multiple AWS Regions, enabling low latency global reads and disaster recovery from outages across an AWS Region.
+The **Data tier** is located at the backend where the information provided is managed, stored, and retrieved when needed.  This tier is mostly developed using SAP HANA Cloud.
+In Q1 2022 Multi-Zone High Availability across two availability zones (AZs) with synchronous replication has been made available in SAP HANA Cloud. This not only offers you high-availability setups in the same availability zone but also to run with multiple zones to increase availability in case of failing zones.
 
 ### Challenge
 Most of the applications can achieve high levels of resiliency with a standard Availability zones (AZ) setup, but these might not work in case of natural disaster, which usually on across regions or it can be a case of SAP BTP service upgrade across regions, where there will be an outage for few hours. 
