@@ -8,32 +8,11 @@ Resilience, or resilient software design, is about handling failures that occur 
 
 There are many different principles and patterns you can use to make your software resilient. It is, however, not always easy to find the combination that best fits your applications. The [Developing Resilient Apps on SAP BTP Guide](https://help.sap.com/viewer/eadaa45871804b4a974be865f627e791/Cloud/en-US/d1fe5fd8ecfb46c193221ebb991af3d7.html) gives an overview of the various options you have when developing applications and detailed information about the individual patterns you can use.
 
-### High Availability at Platform and Services
-
-In the SAP Business Technology Platform, you can make use of the Availability Zones (AZ),  The Availability Zones (AZ) are single failure domains within a single geographical region and are separate physical locations with independent power, network, and cooling. Multiple AZs exist in one region and are connected through a low-latency network.
-
-The SAP BTP services such as SAP Launchpad and SAP HANA Cloud are deployed across multiple Availability zones (AZ), which improves the availability of service if there are issues with the infrastructure of one AZ.
-
-### High Availability at Application Level
-
-When developing applications, we have to consider different aspects of the applications to support resiliency. There are different tiers while developing CAP applications. 
-
-The **Presentation/Web tier** is the user interface and communication layer of the application, where the end-user interacts with the application. This tier is typically developed using SAP UI5 or HTML5 technology. The SAP Launchpad service is used as a central entry point to these apps.  The high availability on this tier can be improved using Availability zones (AZ).
-
-The **Application tier** is the heart of the application, where all the business logic is used to process the information from the presentation tier. This tier is often developed using different buildpacks provided by the SAP BTP Cloud Foundry environment.  It also utilizes different services offered by the SAP Business Technology Platform. Running multiple application instances to increase the availability on this tier.
-
-The **Data tier** is located at the backend where the information provided is managed, stored, and retrieved when needed.  This tier is mostly developed using SAP HANA Cloud.
-In Q1 2022 Multi-Zone High Availability across two availability zones (AZs) with synchronous replication has been made available in SAP HANA Cloud. This not only offers you high-availability setups in the same availability zone but also to run with multiple zones to increase availability in case of failing zones.
-
 ### Challenge
 Most of the applications can achieve high levels of resiliency with a standard Availability zones (AZ) setup, but these might not work in case of natural disaster, which usually on across regions or it can be a case of SAP BTP service upgrade across regions, where there will be an outage for few hours. 
 
-In such cases, it is recommended to run your application in active-active (Distributed Resiliency) across regions. This also helps to achieve different other objectives such as  
--   Low latency for globally distributed audience
--   Always-on availability for complete regional outages
--   Best utilization of platform resources in multiple data centers.
+In such cases, it is recommended to run your application in active-active (Distributed Resiliency) across regions.  
 
-This mission discusses the fundamental design patterns and sample implementations to build distributed resilient applications on the SAP Business Technology Platform (BTP) to meet the mission-critical application requirements.
 
 
 
@@ -42,9 +21,11 @@ The conceptual solution diagram below shows a hybrid and multi-cloud architectur
 
 ![Solution Architecture](./images/s1-a1.png)
 
+This reference architecture is for building modern applications and analytics solutions across the enterprise data with cloud-native scalability, speed, and performance. This will not address the data availability and latency use cases that require multi-region availability.
+
 In this scenario, we are going to deploy CAP applications to multiple regions with an active-active setup. SAP HANA Cloud is configured with synchronous and asynchronous replicas on the availability zones (AZs) and Azure Traffic Manager is used for routing incoming requests to SAP BTP subaccounts across different regions based on the maintained configurations, which can performance-based, weighted or geo-based.
 
-This reference architecture is for building modern applications and analytics solutions across the enterprise data with cloud-native scalability, speed, and performance. This will not address the data availability and latency use cases that require multi-region availability.
+
   
 ## Requirements
 
