@@ -14,30 +14,18 @@ In the SAP Business Technology Platform, you can make use of the Availability Zo
 
 The SAP BTP services such as SAP Launchpad and SAP HANA Cloud are deployed across multiple Availability zones (AZ), which improves the availability of service if there are issues with the infrastructure of one AZ.
 
-### High Availability at Application Level
-
-When developing applications, we have to consider different aspects of the applications to support resiliency. There are different tiers while developing CAP applications. 
-
-The **Presentation/Web tier** is the user interface and communication layer of the application, where the end-user interacts with the application. This tier is typically developed using SAP UI5 or HTML5 technology. The SAP Launchpad service is used as a central entry point to these apps.  The high availability on this tier can be improved using Availability zones (AZ).
-
-The **Application tier** is the heart of the application, where all the business logic is used to process the information from the presentation tier. This tier is often developed using different buildpacks provided by the SAP BTP Cloud Foundry environment.  It also utilizes different services offered by the SAP Business Technology Platform. Running multiple application instances to increase the availability on this tier.
-
-The **Data tier** is located at the backend where the information provided is managed, stored, and retrieved when needed.  For high availability across multiple AWS Regions, you can set up Aurora global databases. Each Aurora global database spans multiple AWS Regions, enabling low latency global reads and disaster recovery from outages across an AWS Region.
 
 ### Challenge
 Most of the applications can achieve high levels of resiliency with a standard Availability zones (AZ) setup, but these might not work in case of natural disaster, which usually on across regions or it can be a case of SAP BTP service upgrade across regions, where there will be an outage for few hours. 
 
-In such cases, it is recommended to run your application in active-active (Distributed Resiliency) across regions. This also helps to achieve different other objectives such as  
--   Low latency for globally distributed audience
--   Always-on availability for complete regional outages
--   Best utilization of platform resources in multiple data centers.
-
-This mission discusses the fundamental design patterns and sample implementations to build distributed resilient applications on the SAP Business Technology Platform (BTP) to meet the mission-critical application requirements.
+In such cases, it is recommended to run your application in active-active (Distributed Resiliency) across regions. 
 
 ## Solution Architecture
 The conceptual solution diagram below shows a hybrid and multi-cloud architecture design, which integrates applications with SAP BTP services and solutions on multiple cloud platforms.
 
 ![S1](./images/s1-a1.png )
+
+This reference architecture is for building modern applications with data availability across the regions. This will not address the data latency issue across the regions and realtime analytics solutions.
 
 In this scenario, we are going to deploy the CAP applications to multiple regions with active-active setup. The Amazon Aurora Global Data Base Cluster is configured with cross-region read replica. Amazon Route 53 is used for routing the request to different region subaccounts based on the maintained configurations.
  
@@ -69,25 +57,25 @@ Subscriptions required in your SAP Business Technology Platform Account:
 
 ## Setup and Configuration
 
-#### [Step 1: Setup Amazon Aurora Global Database](./01-Setup%20AWS%20Aurora/README.md)
+#### [Step 1: Setup Amazon Aurora Global Database](./tutorial/01-Setup%20AWS%20Aurora/README.md)
 
-#### [Step 2: Deploy the SAP CAP Java project to different regions](./02-Setup%20CAP%20Application/README.md)
+#### [Step 2: Deploy the SAP CAP Java project to different regions](./tutorial/02-Setup%20CAP%20Application/README.md)
 
-#### [Step 3: Map Custom Domain Routes](./03-Configuring%20Custom%20Domains/README.md)
+#### [Step 3: Map Custom Domain Routes](./tutorial/03-Configuring%20Custom%20Domains/README.md)
 
-#### [Step 4: Setup Amazon Route 53](./04-Setup%20Route53/README.md)
+#### [Step 4: Setup Amazon Route 53](./tutorial/04-Setup%20Route53/README.md)
 
-#### [Step 5: Test Failover Scenario](./05-Test%20Failover%20Scenario/README.md)
+#### [Step 5: Test Failover Scenario](./tutorial/05-Test%20Failover%20Scenario/README.md)
 
-#### [Step 6: Access and Discover Application Logs and Metrics](./06-Logging/README.md)
+#### [Step 6: Access and Discover Application Logs and Metrics](./tutorial/06-Logging/README.md)
 
-#### [Step 7: Setup of Continuous Integration and Continuous Delivery (CI/CD)](./07-CICD/README.md)
+#### [Step 7: Setup of Continuous Integration and Continuous Delivery (CI/CD)](./tutorial/07-CICD/README.md)
 
-#### [Step 8: Setup of SAP Cloud Transport Management to keep tenants in sync](./08-TMS/README.md)
+#### [Step 8: Setup of SAP Cloud Transport Management to keep tenants in sync](./tutorial/08-TMS/README.md)
 
-#### [Step 9: Setup of Alert Notification](./09-ANS/README.md)
+#### [Step 9: Setup of Alert Notification](./tutorial/09-ANS/README.md)
 
-#### [Miscellaneous: Additional Findings and Analyses](./10-Additional%20Findings/README.md)
+#### [Step 10: Additional Findings and Analyses](./tutorial/10-Additional%20Findings/README.md)
 
 ## <a name="furtherreading"></a> Further Reading
 
