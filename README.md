@@ -78,7 +78,6 @@ Subscriptions required in your SAP Business Technology Platform Account:
 
 #### [Step 9: Setup of Alert Notification](./tutorial/09-ANS/README.md)
 
-#### [Step 10: Additional Findings and Analyses](./tutorial/10-Additional%20Findings/README.md)
 
 ## <a name="furtherreading"></a> Further Reading
 
