@@ -16,7 +16,8 @@ Enabling write forwarding is **not supported** for Amazon Aurora PostgreSQL-Comp
 
 ##  2. Using Amazon RDS Proxy 
 Amazon RDS Proxy  is a fully managed, highly available database proxy for Amazon Relational Database Service (RDS) that makes applications more scalable, more resilient to database failures, and more secure.
-Aurora global databases currently don't support Amazon RDS Proxy.
+
+Aurora global databases currently don't support Amazon RDS Proxy. Refer the section [Limitations of Amazon Aurora global databases](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html)
 
 ##  3. Using other proxies
 
