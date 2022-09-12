@@ -27,15 +27,6 @@ HAProxy is lightweight and easy to configure, but it does not provide query filt
 
 Pgpool-II is a middleware that works between PostgreSQL servers and a PostgreSQL database client. It can perform a read/write split on a single port.  Refer to AWS Database Blog [How to set up a single pgpool endpoint for reads and writes with Amazon Aurora PostgreSQL](https://aws.amazon.com/blogs/database/a-single-pgpool-endpoint-for-reads-and-writes-with-amazon-aurora-postgresql).
 
-
-<div class="panel panel-info">
-**Note**
-{: .panel-heading}
-<div class="panel-body">
-
-NOTE DESCRIPTION
-
-</div>
 > **_NOTE:_** These proxy configurations are specific to single Amazon Aurora cluster, but when it comes to [Aurora global database](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html), consists of one primary DB cluster, and multiple read-only secondary DB cluster. This leads to **more complexity** in proxy configuration. 
 
 ##  4. Read/Write traffic separation in application layer
