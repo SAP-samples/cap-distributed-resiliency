@@ -15,7 +15,7 @@ The write forwarding configuration saves you from implementing your own mechanis
 Enabling write forwarding is **not supported** for Amazon Aurora PostgreSQL-Compatible Edition, it works on the MySQL-Compatible Edition.
 
 ##  2. Using Amazon RDS Proxy 
-Amazon RDS Proxy  is a fully managed, highly available database proxy for Amazon Relational Database Service (RDS) that makes applications more scalable, more resilient to database failures, and more secure.
+Amazon RDS Proxy is a fully managed, highly available database proxy for Amazon Relational Database Service (RDS) that makes applications more scalable, more resilient to database failures, and more secure.
 
 Aurora global databases currently don't support Amazon RDS Proxy. Refer the section [Limitations of Amazon Aurora global databases](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html)
 
@@ -26,7 +26,7 @@ HAProxy or Pgpool-II can be used for Load Balancing your PostgreSQL, but this ha
 HAProxy is lightweight and easy to configure, but it does not provide query filtering nor does query analysis to identify the type of statements being requested. It cannot perform a read/write split on a single port. 
 
 Pgpool-II is a middleware that works between PostgreSQL servers and a PostgreSQL database client. It can perform a read/write split on a single port.  Refer to AWS Database Blog [How to set up a single pgpool endpoint for reads and writes with Amazon Aurora PostgreSQL](https://aws.amazon.com/blogs/database/a-single-pgpool-endpoint-for-reads-and-writes-with-amazon-aurora-postgresql).
-> **_NOTE:_** These configurations are specific to single Amazon Aurora cluster, but when it comes to [Aurora global database](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html), consists of one primary DB cluster, and multiple read-only secondary DB cluster. This leads to more complexity in proxy configuration. 
+> **_NOTE:_** These proxy configurations are specific to single Amazon Aurora cluster, but when it comes to [Aurora global database](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html), consists of one primary DB cluster, and multiple read-only secondary DB cluster. This leads to more complexity in proxy configuration. 
 
 ##  4. Read/Write traffic separation in application layer
 
