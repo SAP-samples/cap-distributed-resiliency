@@ -118,7 +118,16 @@ Add the database details to project descriptor file (package.json). [Reference](
 
 **Deploying Router and Backend Modules:** 
 
-9. Rename the mta-single-tenant.yaml to mta.yaml.  
+9. Add the PostgreSQL dependency in srv\pom.xml([reference] (./cloud-cap-samples-java/pom.xml)) 
+````
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.3.3</version>
+</dependency>
+````
+
+10. Rename the mta-single-tenant.yaml to mta.yaml.  
 10. Remove the bookshop-hdi-container references and bookshop-db module from mta.yaml ([reference](./cloud-cap-samples-java/mta.yaml)) and modify the build-parameters.
    
     ![app.yml](./images/08b.png)
