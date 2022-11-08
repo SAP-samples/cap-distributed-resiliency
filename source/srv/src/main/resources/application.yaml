@@ -1,0 +1,139 @@
+---
+server.port: 8090
+logging:
+  level:
+    "[com.sap.cds.auditlog]": DEBUG
+spring:
+  web.resources.static-locations: "file:./app"
+  jmx:
+    enabled: true
+cds:
+  odata-v4.endpoint.path: "/api"
+  security.mock.users:
+    - name: admin
+      password: admin
+      roles:
+        - admin
+      attributes:
+        businessPartner:
+          - "10401010"
+    - name: user
+      password: user
+server.servlet.encoding:
+  charset: UTF-8
+  force: true
+management:
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "health"
+  health:
+    defaults.enabled: false
+    ping.enabled: true
+    db.enabled: true
+    myhealth.enabled: true
+
+---
+spring:
+  config.activate.on-profile: cloud
+  datasource:
+    primary:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://demo-region-1.cluster-cx9h0tlkt1mm.us-east-1.rds.amazonaws.com:5432,demo-region-2.cluster-cwsuog3it6v4.ap-southeast-2.rds.amazonaws.com:5432/bookshop?currentSchema=public&targetServerType=primary
+      username: postgres
+      password: Welcome!123
+      initialization-mode: never
+      hikari:
+        maximum-pool-size: 10
+    secondary:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://demo-region-1.cluster-ro-cx9h0tlkt1mm.us-east-1.rds.amazonaws.com:5432,demo-region-2.cluster-ro-cwsuog3it6v4.ap-southeast-2.rds.amazonaws.com:5432/bookshop?currentSchema=public&targetServerType=preferSecondary
+      username: postgres
+      password: Welcome!123
+      initialization-mode: never
+      hikari:
+        maximum-pool-size: 10
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+cds:
+  messaging.services:
+    bupa-messaging:
+      kind: enterprise-messaging
+      format: cloudevents
+      subscribe-prefix: sap/S4HANAOD/java/ce/
+  remote.services:
+    "[API_BUSINESS_PARTNER]":
+      destination:
+        properties:
+          url: "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap"
+        headers:
+          APIKey: "" # Place API Key from SAP API Business Hub here or use environment variable CDS_REMOTE_SERVICES_API_BUSINESS_PARTNER_DESTINATION_HEADERS_APIKEY
+        type: "odata-v2"
+
+---
+spring:
+  config.activate.on-profile: sqlite
+  datasource:
+    primary:
+      url: "jdbc:sqlite:primary.db"
+      driver-class-name: org.sqlite.JDBC
+      initialization-mode: never
+      hikari:
+        maximum-pool-size: 10      
+    secondary:
+      url: "jdbc:sqlite:secondary.db"
+      driver-class-name: org.sqlite.JDBC
+      initialization-mode: never
+      hikari:
+        maximum-pool-size: 10      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+cds:
+  messaging.services:
+    bupa-messaging:
+      kind: enterprise-messaging
+      format: cloudevents
+      subscribe-prefix: sap/S4HANAOD/java/ce/
+  remote.services:
+    "[API_BUSINESS_PARTNER]":
+      destination:
+        properties:
+          url: "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap"
+        headers:
+          APIKey: "" # Place API Key from SAP API Business Hub here or use environment variable CDS_REMOTE_SERVICES_API_BUSINESS_PARTNER_DESTINATION_HEADERS_APIKEY
+        type: "odata-v2"
+
+---
+spring:
+  config.activate.on-profile: mocked
+cds:
+  messaging.services:
+    bupa-messaging:
+      kind: file-based-messaging
+  application.services:
+    api-business-partner-mocked:
+      model: API_BUSINESS_PARTNER
+      serve:
+        path: API_BUSINESS_PARTNER
+  remote.services:
+    "[API_BUSINESS_PARTNER]":
+      destination:
+        name: "myself"
+        suffix: "/api"
+
+---
+spring:
+  config.activate.on-profile: default
+cds:
+  data-source:
+    auto-config.enabled: false

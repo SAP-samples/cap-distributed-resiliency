@@ -1,0 +1,45 @@
+{
+  "name": "bookshop-java",
+  "version": "1.0.0",
+  "description": "Bookshop using CAP Java NG",
+  "license": "Apache License Version 2.0",
+  "repository": "https://github.com/SAP-samples/cloud-cap-samples-java.git",
+  "dependencies": {
+    "cds-dbm": "^0.0.36",
+    "cds-pg": "0.0.51",
+    "express": "^4"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "database"
+      },
+      "database": {
+        "impl": "cds-pg",
+        "model": [
+          "srv"
+        ],
+        "credentials": {
+          "host": "demo-region-1.cluster-cx9h0tlkt1mm.us-east-1.rds.amazonaws.com",
+          "port": 5432,
+          "database": "bookshop",
+          "user": "postgres",
+          "password": "Welcome!123"
+        }
+      }
+    },
+    "migrations": {
+      "db": {
+        "schema": {
+          "default": "public",
+          "clone": "_cdsdbm_clone",
+          "reference": "_cdsdbm_ref"
+        },
+        "deploy": {
+          "tmpFile": "tmp/_autodeploy.json",
+          "undeployFile": "db/undeploy.json"
+        }
+      }
+    }
+  }
+}
