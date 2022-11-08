@@ -1,30 +1,16 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cap-distributed-resiliency)](https://api.reuse.software/info/github.com/SAP-samples/cap-distributed-resiliency)
 
-# Distributed Resiliency of SAP CAP applications
-This repository contains design patterns, code samples and step-by-step instructions to enable *Distributed Resiliency in CAP applications*. 
-## Description
-Resilience, or resilient software design, is about handling failures that occur in complex system landscapes during runtime and ideally should not be noticed by the users. As opposed to traditional stability approaches, its goal is not to reduce the probability of failure occurrence, but to maximize the availability of systems and system landscapes. It accepts the unavoidability and unpredictability of failures and focuses on dealing with them as quickly as possible.
+# SAP CAP Application Dynamic Data Source Routing
+A very common use case that we experience while designing an application is the necessity to switch databases on the fly based on region or read/write activity in order to reduce latency and boost availability.
 
-There are many different principles and patterns you can use to make your software resilient. It is, however, not always easy to find the combination that best fits your applications. The [Developing Resilient Apps on SAP BTP Guide](https://help.sap.com/viewer/eadaa45871804b4a974be865f627e791/Cloud/en-US/d1fe5fd8ecfb46c193221ebb991af3d7.html) gives an overview of the various options you have when developing applications and detailed information about the individual patterns you can use.
+Consider a geo-distributed app, which spans many geographic locations to ensure high availability, resiliency, compliance, and performance. The application layer is distributed across regions and linked to distributed databases. As a result, the application layer is highly available and reliable. Furthermore, the geo-distributed app can fulfil user requests with little latency, regardless of the user’s location.
 
+The user data should be located as close to the application instance as possible for optimal performance. Let’s examine various data storage distribution patterns for DB operations.
 
-In SAP Business Technology Platform, you can make use of the Availability Zones (AZ). The Availability Zones (AZ) are single failure domains within a single geographical region and are separate physical locations with independent power, network, and cooling. Multiple AZs exist in one region and are connected with each other through a low-latency network.
-
-The SAP BTP services such as SAP Launchpad and SAP HANA Cloud are deployed across multiple Availability zones (AZ), which improves the availability of service if there are issues with the infrastructure of one AZ. 
-
-Most of the applications can achieve high levels of resiliency with a standard Availability zones (AZ) setup, but these might not work in case of natural disasters, which usually be across regions or it can be a case of SAP BTP service upgrade across regions, where there will be an outage for few hours. 
-
-In such cases, it is recommended to run your application in active-active (Distributed Resiliency) across regions. The following implementations discuss the best practices and reference blueprints for distributed resilient application design on the SAP Business Technology Platform, which integrates applications with cloud services and solutions on multiple cloud platforms.
-
-## Implementations
-
-#### [SAP HANA Cloud (Multi-Zone Replication) with Azure Traffic Manager](https://github.com/SAP-samples/cap-distributed-resiliency/tree/SAP-HANA-Cloud)
-
-In this scenario, you will learn how to achieve the Distributed Resiliency on CAP application using SAP HANA Cloud Database & Azure traffic manager.
-
-#### [Amazon Aurora (Read Replica) with Amazon Route 53](https://github.com/SAP-samples/cap-distributed-resiliency/tree/Amazon-Aurora)
-
-In this scenario, you will learn how to achieve the Distributed Resiliency of CAP applications using Amazon Aurora Database & Amazon Route 53.
+Read local/write locally: In this pattern, all the read and write requests are served from the local region. It will not only help in reducing the latency but also reduce the potential for network errors. There are few global databases having support for this functionality, Amazon DynamoDB is a great example to understand this pattern.
+Read local/write global: In this pattern, specific region works as a global write region. All the write operations will be performed in this region, while read requests can be served from any region. Amazon Aurora is a great example to understand this pattern.
+Read local/write partitioned: In this pattern, each item or record is assigned to a home region. Here we map records with partition key (such as user ID) to a home region close to where most write requests will originate.
+There are several techniques for implementing patterns 2 and 3 at the application layer, but we will concentrate on the spring boot dynamic data source routing approach to disperse database operations.
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/cap-distributed-resiliency/issues) in this repository if you find a bug or have questions about the content.
