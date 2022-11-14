@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run BookShop",
+            "type": "java",
+            "request": "launch",
+            "mainClass": "my.bookshop.Application",
+            "args": "--spring.profiles.active=sqlite",
+            "env": {
+                "READ_ENDPOINT_REGION": "secondary"
+            }
+        }      
+    ]
+}
