@@ -86,7 +86,8 @@ We need to follow a different process and modify few files for deployment since 
    Copy the following details from default-env.json and use it in application.yaml. 
     ![default env](./images/08.png)
 
-   Modify the spring cloud profile with SAP HANA Cloud instance details, which is copied from previous step.
+   Modify the spring cloud profile with SAP HANA Cloud instance details, which is copied from previous step. These configurations can be easily configured via application.yaml file. But sometimes you need more flexibility to change the configuration without redeploying. Check the [Externalize Data source configuration](./README.md#externalize) 
+   
     ![app.yml](./images/09.png)
     
 7. Now all the changes are complete. Let us build and deploy the application. To build, right-click on mta.yaml file and select Build the application. This will create the *mtar* file under *mta_archives*.
@@ -121,3 +122,54 @@ We need to follow a different process and modify few files for deployment since 
  > Refer the [CI/CD pipeline](../../../Operational%20Resiliency/CICD/README.md) that automatically builds, tests, and deploys your code changes. Also refer [Cloud Transport Management Service](../../../Operational%20Resiliency/TMS/README.md) for propagate it towards different regions.
 
 Congratulations! Now you have a sample bookshop application running in subaccounts of different regions and connecting to SAP HANA Cloud instance with synchronous and asynchronous replication. In the next tutorial, learn about mapping custom domain routes for this application.
+
+## Appendix 
+### <a name="externalize"></a> Externalize Data source configuration
+
+####Making use of User-Provided variables
+The Spring configuration gives a lot of flexibility on how to configure different parts of the framework. When it comes to data source configuration, the same is true. However, some of the configuration options are better choice depending on the situation. For example, having a database connection string (URI) in the application.yaml files as spring.datasource.url is fine during the development or in the staging environment. On the other hand, a production database connection string hardcoded and committed to the source control won’t be considered OK in many situations. A very convenient way and at the same time supported by most of the cloud providers is setting secrets and configuration options as environment variables.  
+
+1. Modify the application.yaml something like follows to read from environment variable. 
+
+    ```yaml
+    spring:
+    config.activate.on-profile: cloud
+    datasource:
+        driver-class-name: com.sap.db.jdbc.Driver
+        url: ${datasource_url}      
+        username: ${datasource_username} 
+        password: ${datasource_password} 
+        initialization-mode: never
+        hikari:
+            maximum-pool-size: 10
+    ```
+2. After deploying the application, add the following environment variables 
+   -    Open SAP BTP Cockpit and navigate to bookshop-srv application
+   -    Choose User-Provided Variables from the navigation pane, and add the following variables
+          ``` 
+          datasource_url: <db url> 
+          datasource_username: <db user>
+          datasource_password: <db password>
+          ```
+        ![env](./images/env-1.png)   
+       
+       
+    - After adding, restart the application to ensure that variable changes take effect.
+
+####Making use of User-Provided service
+The user-provided service can also be bound and used within an application.yaml.
+Refer to the document [Creating User-Provided Service Instances](https://help.sap.com/docs/SERVICEMANAGEMENT/09cc82baadc542a688176dce601398de/7c0125b78d744de6bed4595351fd120e.html) for further information.
+
+Modify the application.yaml something like follows to read from user-provided service. 
+Note: Change the sample-db (vcap.services.`sample-db`.credentials) with your user-provided service instance name 
+
+```yaml
+spring:
+  config.activate.on-profile: cloud
+  datasource:
+      driver-class-name: com.sap.db.jdbc.Driverr
+      url: jdbc:sap://${vcap.services.sample-db.credentials.hostname}:${vcap.services.sample-db.credentials.port}?encrypt=true&validateCertificate=true&currentschema=BOOKSHOP
+      username: ${vcap.services.sample-db.credentials.username}
+      password: ${vcap.services.sample-db.credentials.password} 
+```
+
