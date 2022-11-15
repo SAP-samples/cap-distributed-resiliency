@@ -44,16 +44,16 @@ spring:
     primary:
       driver-class-name: org.postgresql.Driver
       url: jdbc:postgresql://demo-region-1.cluster-cx9h0tlkt1mm.us-east-1.rds.amazonaws.com:5432,demo-region-2.cluster-cwsuog3it6v4.ap-southeast-2.rds.amazonaws.com:5432/bookshop?currentSchema=public&targetServerType=primary
-      username: postgres
-      password: Welcome!123
+      username: <username>
+      password: <password>
       initialization-mode: never
       hikari:
         maximum-pool-size: 10
     secondary:
       driver-class-name: org.postgresql.Driver
       url: jdbc:postgresql://demo-region-1.cluster-ro-cx9h0tlkt1mm.us-east-1.rds.amazonaws.com:5432,demo-region-2.cluster-ro-cwsuog3it6v4.ap-southeast-2.rds.amazonaws.com:5432/bookshop?currentSchema=public&targetServerType=preferSecondary
-      username: postgres
-      password: Welcome!123
+      username: <username>
+      password: <password>
       initialization-mode: never
       hikari:
         maximum-pool-size: 10
