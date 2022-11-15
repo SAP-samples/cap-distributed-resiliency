@@ -86,7 +86,7 @@ We need to follow a different process and modify few files for deployment since 
    Copy the following details from default-env.json and use it in application.yaml. 
     ![default env](./images/08.png)
 
-   Modify the spring cloud profile with SAP HANA Cloud instance details, which is copied from previous step. These configurations can be easily configured via application.yaml file. But sometimes you need more flexibility to change the configuration without redeploying. Check the [Externalize Data source configuration](./README.md#externalize) 
+   Modify the spring cloud profile with SAP HANA Cloud instance details, which is copied from previous step.   The Spring configuration provides a great deal of freedom in how to set various components of the framework; nevertheless, if you wish to externalize the data source configuration, refer the section [How to externalize the data source configuration](./README.md#externalize) 
    
     ![app.yml](./images/09.png)
     
@@ -124,9 +124,9 @@ We need to follow a different process and modify few files for deployment since 
 Congratulations! Now you have a sample bookshop application running in subaccounts of different regions and connecting to SAP HANA Cloud instance with synchronous and asynchronous replication. In the next tutorial, learn about mapping custom domain routes for this application.
 
 ## Appendix 
-### <a name="externalize"></a> Externalize Data source configuration
+### <a name="externalize"></a> Externalize the data source configuration
 
-####Making use of User-Provided variables
+#### Making use of User-Provided variables
 The Spring configuration gives a lot of flexibility on how to configure different parts of the framework. When it comes to data source configuration, the same is true. However, some of the configuration options are better choice depending on the situation. For example, having a database connection string (URI) in the application.yaml files as spring.datasource.url is fine during the development or in the staging environment. On the other hand, a production database connection string hardcoded and committed to the source control won’t be considered OK in many situations. A very convenient way and at the same time supported by most of the cloud providers is setting secrets and configuration options as environment variables.  
 
 1. Modify the application.yaml something like follows to read from environment variable. 
@@ -156,7 +156,7 @@ The Spring configuration gives a lot of flexibility on how to configure differen
        
     - After adding, restart the application to ensure that variable changes take effect.
 
-####Making use of User-Provided service
+#### Making use of User-Provided service
 The user-provided service can also be bound and used within an application.yaml.
 Refer to the document [Creating User-Provided Service Instances](https://help.sap.com/docs/SERVICEMANAGEMENT/09cc82baadc542a688176dce601398de/7c0125b78d744de6bed4595351fd120e.html) for further information.
 
