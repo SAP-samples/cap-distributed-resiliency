@@ -1,7 +1,7 @@
 # Performance Test results between regions
+The following performance tests are executed with single user 100 iterations using JMeter.
 
-The following performance tests are executed sequentially 100 times with a single thread using JMeter.
-###Landscape
+### Landscape
 ![Accessing US Region ](images/HA-test.png)
 ### Request from India South to US West 
 ![Accessing US Region ](images/us.png)
