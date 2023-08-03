@@ -41,7 +41,7 @@ spring:
   config.activate.on-profile: cloud
   datasource:
       driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://demo-region-1.cluster-cx9h0tlkt1mm.us-east-1.rds.amazonaws.com:5432,demo-region-2.cluster-cwsuog3it6v4.ap-southeast-2.rds.amazonaws.com/bookshop?currentSchema=public&loginTimeout=2&connectTimeout=2&cancelSignalTimeout=2&socketTimeout=60&tcpKeepAlive=true&targetServerType=primary
+      url: jdbc:postgresql://${vcap.services.region-1.credentials.hostname}:${vcap.services.region-1.credentials.port},${vcap.services.region-2.credentials.hostname}:${vcap.services.region-2.credentials.port}/bookshop?currentSchema=public&loginTimeout=2&connectTimeout=2&cancelSignalTimeout=2&socketTimeout=60&tcpKeepAlive=true&targetServerType=primary
       username: postgres
       password: <DB Password>
       initialization-mode: never

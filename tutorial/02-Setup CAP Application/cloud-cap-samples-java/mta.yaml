@@ -28,13 +28,28 @@ modules:
         - mvn clean package -DskipTests=true
       build-result: target/*-exec.jar
     requires:
+      - name: bookshop-pg
       - name: bookshop-uaa
       - name: cf-logging
     provides:
       - name: srv
         properties:
           url: '${default-url}'
-
+# --------------------- DB MODULE ---------------------------
+  - name: bookshop-db
+# -----------------------------------------------------------
+    type: hdb
+    path: db
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: custom
+      commands:
+        - npm run build
+      requires:
+        - name: bookshop-srv
+    requires:
+      - name: bookshop-pg
 # --------------------- APPROUTER MODULE ---------------------
   - name: bookshop-app
 # ------------------------------------------------------------

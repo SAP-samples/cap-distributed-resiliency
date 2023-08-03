@@ -47,111 +47,127 @@ Clone an existing CAP application in SAP Business Application Studio and deploy 
 ## Deploy to SAP Business Technology Platform
 The sample bookshop application comes with two predefined profiles: default and cloud  (see srv/src/main/resources/application.yaml). The default profile specifies to use an in-memory H2 database and deploying the application to Cloud Foundry, the CF Java Buildpack automatically configures the cloud Spring profile. We will modify the cloud Spring profile to work with *Amazon Aurora PostgreSQL-Compatible Edition*
 
-The PostgreSQL support is not natively available in CAP framework, so we need to follow different process for the deployment.
-
-6. Use the SAP Business Application Studio Terminal and login to the subaccount.
+8. Use the SAP Business Application Studio Terminal and login to the subaccount.
    
     ```
     cf login -a https://api.cf.ap20.hana.ondemand.com
     ```
-**Deploying DB Models:**
+**Preparing DB Model deployment:**
 
-7.  We are going to use two Open Source Node.js modules (cds-pg, cds-dbm) in combination with @sap/cds for deployment.
-Add the database details to project descriptor file (package.json). [Reference](./cloud-cap-samples-java/package.json)
+9. Execute the following command to create a User-Provided service, utilizing the Amazon Aurora endpoint configuration details.
+![endpoint url](./images/07.png)
+    ```
+    cf create-user-provided-service <service name> -p '{\"dbname\": \"<dbname>\",\"hostname\": \"<db host>\",\"password\": \"<password>\",\"port\": \"<db port>\",\"schema\": \"public\",\"username\": \"<db user>\"}'
+
+    Example:
+    cf create-user-provided-service bookshop-pg -p '{\"dbname\": \"postgres\",\"hostname\": \"database-1-instance-1.cs1lgzxhfizd.eu-north-1.rds.amazonaws.com\",\"password\": \"<password>\",\"port\": \"5432\",\"schema\": \"public\",\"username\": \"postgres\"}'
+    ```
+7.  We are going to use the npm package @cap-js/postgres for deployment.
+Add the database details to project descriptor file (package.json). 
     ```
     "dependencies": {
-        "cds-dbm": "^0.0.36",
-        "cds-pg": "0.0.51",
-        "express": "^4"
+        "@cap-js/postgres": "^1.1.0",
+        "@sap/cds-dk": "^7.0.3"
+    },
+    "scripts": {
+        "deploy": "cds-deploy"
     },
     "cds": {
+        "build": {
+        "target": ".",
+        "tasks": [
+                    {"for": "nodejs",src": "db","options": {"model": ["db","srv"]}},
+                    {"for": "java","src": "srv","options": {"model": ["db","srv"]}}
+            ]
+        },
         "requires": {
         "db": {
-            "kind": "database"
-        },
-        "database": {
-            "impl": "cds-pg",
-            "model": [
-            "srv"
-            ],
-            "credentials": {
-            "host": "<Aurora cluster writer endpoint>",
-            "port": 5432,
-            "database": "bookshop",
-            "user": "postgres",
-            "password": "<DB Password>"
+            "kind": "postgres",
+            "impl": "@cap-js/postgres",
+            "pool": {
+            "acquireTimeoutMillis": 3000
+            },
+            "vcap": {
+            "label": "user-provided"
             }
         }
-        },
-        "migrations": {
-            "db": {
-                "schema": {
-                "default": "public",
-                "clone": "_cdsdbm_clone",
-                "reference": "_cdsdbm_ref"
-                },
-                "deploy": {
-                "tmpFile": "tmp/_autodeploy.json",
-                "undeployFile": "db/undeploy.json"
-                }
-            }
         }
-    }
+    },
     ```
+    In the package.json, we have introduced several modifications. Let’s examine them individually:
 
-8. We need to deploy the corresponding db artifacts to the PostgreSQL database. As mentioned above, cds deploy cannot be leveraged. Instead, we need to make use of the cds-dbm tasks. Refer [documentation](https://github.com/mikezaschka/cds-dbm#commands).
-   
-    To deploy the changes, simply call the following cmd from the terminal (npx is required as of now).
-    ```
-    npx cds-dbm deploy
-    ```
-    The following cmd helps to load the sample data, which is in db\data folder.  
-    ```
-    npx cds-dbm load --via full
-    ```
+    - `` scripts.deploy ``: The hyphen in “cds-deploy” is essential because we do not utilize “@cds-dk” for deployment. In case you are interested in using “@cds-dk” for other reasons, you may consider incorporating the apt-buildpack in your deployment module.
+    - `` cds.build``: There are two build tasks to facilitate a Cloud Foundry deployment. One task is for Node.js, and the other is for Java. This approach empowers us to handle database schema deployment using Node.js while executing the application through Spring Boot.
+    - `` requires.db.pool.acquireTimeoutMillis``: This parameter determines the duration allowed for waiting until an existing connection is retrieved from the pool or a new connection is established. By default, this value is set to 1000 milliseconds. If the database connection is taking longer than expected, you can increase this parameter to allow for a longer waiting time.
+    - `` requires.db.vcap.label`` : If a service is bound to your application and carries the label “postgresql-db,” it is automatically chosen as the default option. This feature is particularly valuable in cases where user-defined services are used. As we are currently utilizing a user-provided service, please retain the value as “user-provided”.
 
-    **Note:** We have to remove few csv files from db\data location, otherwise  sample data load throws an exception with duplication
-    
-    **Files to remove:**
-
-    ![app.yml](./images/08a.png)
-
-**Deploying Router and Backend Modules:** 
-
-9. Add the PostgreSQL dependency in srv\pom.xml([reference] (./cloud-cap-samples-java/pom.xml)) 
-````
-<dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <version>42.3.3</version>
-</dependency>
-````
+    Now, after enhancing the package.json, we have the ability to manually initiate the build by executing the cds build command, which will generate files and folders ready for deployment. However, note that executing this step right now is not mandatory as it will happen automatically during the mta build stage The next step is to proceed with the final preparation by creating the mta.yml file for deployment.
+  
+**Deploying Router,Backend and DB deployer Modules:** 
 
 10. Rename the mta-single-tenant.yaml to mta.yaml.  
-10. Remove the bookshop-hdi-container references and bookshop-db module from mta.yaml ([reference](./cloud-cap-samples-java/mta.yaml)) and modify the build-parameters.
+10. Modify the DB MODULE - bookshop-db  with the following 
+    ```
+    - name: pg-db-deployer
+        type: nodejs
+        path: .
+        parameters:
+        buildpack: nodejs_buildpack
+        stack: cflinuxfs4
+        no-route: true
+        no-start: true
+        disk-quota: 2GB
+        memory: 512MB
+        tasks:
+        - name: deploy
+            command: npm run deploy
+            disk-quota: 2GB
+            memory: 512MB
+        build-parameters:
+        builder: npm-ci
+        before-all:
+                custom: 
+                - npm install --production
+                - npx cds build --production​
+        ignore: ["node_modules/", "mta_archives/","tmp/","srv/target/"]
+        requires:
+        - name: bookshop-pg   
+    ```
    
-    ![app.yml](./images/08b.png)
+11.  Also modify the application.yaml file ([reference](./cloud-cap-samples-java/application.yaml)) for Amazon Aurora PostgreSQL-Compatible Edition data source.    
+        ```
+        ---
+        spring:
+        config.activate.on-profile: cloud
+        datasource:
+            driver-class-name: org.postgresql.Driver
+            url: jdbc:postgresql://${vcap.services.bookshop-pg.credentials.hostname}:${vcap.services.bookshop-pg.credentials.port}/${vcap.services.bookshop-pg.credentials.dbname}
+            username: ${vcap.services.bookshop-pg.credentials.username}
+            password: ${vcap.services.bookshop-pg.credentials.password} 
+            initialization-mode: never
+            hikari:
+                maximum-pool-size: 10
+        ```
+        **Note**: Replace “bookshop-pg” with the name of your actual database instance specified in the mta.yaml file:
 
-   
-11.  Also modify the application.yaml file ([reference](./cloud-cap-samples-java/application.yaml)) for Amazon Aurora PostgreSQL-Compatible Edition data source. Copy the Amazon Aurora PostgreSQL-Compatible Edition Endpoint URL from Amazon RDS Management console and configure the cloud profile.
-    ![endpoint url](./images/07.png)
-    ![app.yml](./images/09.png)
-
+9. Add the PostgreSQL dependency in srv\pom.xml([reference] (./cloud-cap-samples-java/pom.xml)) 
+    ````
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.3.3</version>
+    </dependency>
+    ````
 
 12. To make use of Amazon Aurora PostgreSQL fast failover, your application's connection string should have a list of hosts instead of just a single host. 
-Copy the Amazon Aurora PostgreSQL Endpoint URLs from different regions and configure profile ([reference](./cloud-cap-samples-java/application-faf.yaml))
+Copy the Amazon Aurora PostgreSQL Endpoint URLs from different regions and create a user provided service for each region then configure the profile something like following ([reference](./cloud-cap-samples-java/application-faf.yaml))
 
     ```
-    jdbc:postgresql://<demo-region-1 endpoint>:5432,
-    <demo-region-2 endpoint>:5432
-    /bookshop?currentSchema=public&loginTimeout=2
-    &connectTimeout=2&cancelSignalTimeout=2&socketTimeout=60
-    &tcpKeepAlive=true&targetServerType=primary
+    jdbc:postgresql://${vcap.services.bookshop-pg-1.credentials.hostname}:${vcap.services.bookshop-pg-1.credentials.port},${vcap.services.bookshop-pg-2.credentials.hostname}:${vcap.services.bookshop-pg-2.credentials.port}/bookshop?currentSchema=public&loginTimeout=2&connectTimeout=2&cancelSignalTimeout=2&socketTimeout=60&tcpKeepAlive=true&targetServerType=primary
     ```
     **Note:** 
-    - targetServerType - allows opening connections to only servers with required state/role in accordance to the defining factor for the PostgreSQL servers. The allowed values are any, primary, secondary, preferSlave, and preferSecondary.  State or role is determined by observing if the server allows writes or not.
-      
-    - These configurations can be easily configured via application.yaml file. But sometimes you need more flexibility to change the configuration without redeploying. Check the [Externalize Data source configuration](./README.md#externalize) 
+    - targetServerType - allows opening connections to only servers with required state/role in accordance to the defining factor for the PostgreSQL servers. The allowed values are any, primary, secondary, preferSlave, and preferSecondary.  State or role is determined by observing if the server allows writes or not.      
+
 
 13. Right click on mta.yaml file and Build the application.
     ![deploy](./images/06.png)
@@ -164,36 +180,3 @@ Copy the Amazon Aurora PostgreSQL Endpoint URLs from different regions and confi
 > Refer the [CI/CD pipeline](../../../Operational%20Resiliency/CICD/README.md) that automatically builds, tests, and deploys your code changes. Also refer [Cloud Transport Management Service](../../../Operational%20Resiliency/TMS/README.md) for propagate it towards different regions.
 
 Congratulations! Now you have a sample bookshop application running on subaccounts of different regions and connecting to Amazon Aurora PostgreSQL-Compatible Edition. In the next tutorial, learn about mapping custom domain routes for this application.
-
-
-## Appendix 
-### <a name="externalize"></a> Externalize Data source configuration
-
-The Spring configuration gives a lot of flexibility on how to configure different parts of the framework. When it comes to data source configuration, the same is true. However, some of the configuration options are better choice depending on the situation. For example, having a database connection string (URI) in the application.yaml files as spring.datasource.url is fine during the development or in the staging environment. On the other hand, a production database connection string hardcoded and committed to the source control won’t be considered OK in many situations. A very convenient way and at the same time supported by most of the cloud providers is setting secrets and configuration options as environment variables.  
-
-1. Modify the application.yaml something like follows to read from environment variable. 
-
-    ```yaml
-    spring:
-    config.activate.on-profile: cloud
-    datasource:
-        driver-class-name: org.postgresql.Driver
-        url: ${datasource_url}      
-        username: ${datasource_username} 
-        password: ${datasource_password} 
-        initialization-mode: never
-        hikari:
-            maximum-pool-size: 10
-    ```
-2. After deploying the application, add the following environment variables 
-   -    Open SAP BTP Cockpit and navigate to bookshop-srv application
-   -    Choose User-Provided Variables from the navigation pane, and add the following variables
-          ``` 
-          datasource_url: <db url> 
-          datasource_username: <db user>
-          datasource_password: <db password>
-          ```
-        ![env](./images/env-1.png)   
-       
-       
-    - After adding, restart the application to ensure that variable changes take effect.
