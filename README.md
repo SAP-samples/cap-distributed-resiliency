@@ -127,7 +127,7 @@ az container exec --exec-command "/bin/bash" --resource-group btp-perftest-with-
 ./run.sh -b <config branch> -r <repo url> -c <config .json>
 
 Example:
-./run.sh -b Performance-Config -r https://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@github.com/SAP-samples/cap-distributed-resiliency.git -c config-ap/daily/GlobalTestConfig.json
+./run.sh -b Performance-Config -r https://<Personal Access Token>@github.com/SAP-samples/cap-distributed-resiliency.git -c config-ap/daily/GlobalTestConfig.json
 
 # This will trigger the tests on different worker nodes based on the configurations available in config branch.
 ```
