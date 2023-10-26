@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: influxdb-config-map
+data:
+  DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: Secret-Auth-Token
+  DOCKER_INFLUXDB_INIT_BUCKET: performance
+  DOCKER_INFLUXDB_INIT_MODE: setup
+  DOCKER_INFLUXDB_INIT_ORG: perfinsights
+  DOCKER_INFLUXDB_INIT_PASSWORD: Welcome1
+  DOCKER_INFLUXDB_INIT_USERNAME: admin

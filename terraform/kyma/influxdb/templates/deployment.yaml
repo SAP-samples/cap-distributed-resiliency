@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb
+  labels:
+    deployment: influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: influxdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        deployment: influxdb
+    spec:
+      containers:
+        - env:
+            - name: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  key: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+                  name: influxdb-config-map
+            - name: DOCKER_INFLUXDB_INIT_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  key: DOCKER_INFLUXDB_INIT_BUCKET
+                  name: influxdb-config-map
+            - name: DOCKER_INFLUXDB_INIT_MODE
+              valueFrom:
+                configMapKeyRef:
+                  key: DOCKER_INFLUXDB_INIT_MODE
+                  name: influxdb-config-map
+            - name: DOCKER_INFLUXDB_INIT_ORG
+              valueFrom:
+                configMapKeyRef:
+                  key: DOCKER_INFLUXDB_INIT_ORG
+                  name: influxdb-config-map
+            - name: DOCKER_INFLUXDB_INIT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  key: DOCKER_INFLUXDB_INIT_PASSWORD
+                  name: influxdb-config-map
+            - name: DOCKER_INFLUXDB_INIT_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: DOCKER_INFLUXDB_INIT_USERNAME
+                  name: influxdb-config-map
+          image: influxdb:2.5.1-alpine
+          name: influxdb
+          ports:
+            - containerPort: 8086
+          resources: {}
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: /var/lib/influxdb2
+              name: influxdb-pvc
+      restartPolicy: Always
+      volumes:
+        - name: influxdb-pvc
+          persistentVolumeClaim:
+            claimName: influxdb-pvc
+status: {}

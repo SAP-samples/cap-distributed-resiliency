@@ -1,0 +1,16 @@
+server.compression.enabled: true
+---
+spring:
+  config.activate.on-profile: cloud
+cds:
+  security.mock.users:
+    - name: BPINST
+      password: Welcome1
+  remote.services:
+    API_SALES_ORDER_SRV:  
+      destination:
+        type: "odata-v2"
+        name: "S4H-PUBLIC"
+        suffix: "/sap/opu/odata/sap"
+        queries:
+          sap-statistics: true

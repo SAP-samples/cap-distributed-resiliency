@@ -1,0 +1,9 @@
+apiVersion: v2
+name: influxdb
+description: Helm chart for InfluxDB
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+- email: shanthakumar.krishnaswamy@sap.com
+  name: shanth

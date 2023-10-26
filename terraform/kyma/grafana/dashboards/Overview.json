@@ -1,0 +1,2283 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_JMETER",
+      "label": "JMeter",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.3.1"
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "This dashboard to present JMeter Overview",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 17444,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "fixed"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
+          },
+          "decimals": 0,
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "number"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "lcd-gauge"
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "from": 1,
+                      "result": {
+                        "color": "#4274c0",
+                        "index": 0
+                      },
+                      "to": 10000
+                    },
+                    "type": "range"
+                  }
+                ]
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "scenario"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 91
+              },
+              {
+                "id": "links",
+                "value": []
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "User Location"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 185
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Connection Type"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 128
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "BTP Location"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 117
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "na": {
+                        "index": 0,
+                        "text": "-"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "s4hLocation"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 149
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Details"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "json-view"
+              },
+              {
+                "id": "custom.align",
+                "value": "center"
+              },
+              {
+                "id": "custom.width",
+                "value": 70
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "targetBlank": true,
+                    "title": "Show Time Aligned Details",
+                    "url": "/d/Details_I_TA/details-time-aligned?orgId=1&${region:queryparam}&${type:queryparam}&var-scenario=${__data.fields[\"scenario\"]}&var-connectionType=${__data.fields[\"Connection Type\"]}&var-btpLocation=${__data.fields[\"BTP Location\"]}&var-s4hLocation=${__data.fields[\"S4H Location\"]}&${userLocation:queryparam}&${request:queryparam}&${aggregation:queryparam}&${testType:queryparam}&from=${__from}&to=${__to}&orgId=1"
+                  },
+                  {
+                    "targetBlank": true,
+                    "title": "Show Details",
+                    "url": "/d/Details_I/details-time-aligned?orgId=1&${region:queryparam}&${type:queryparam}&var-scenario=${__data.fields[\"scenario\"]}&var-connectionType=${__data.fields[\"Connection Type\"]}&var-btpLocation=${__data.fields[\"BTP Location\"]}&var-s4hLocation=${__data.fields[\"S4H Location\"]}&${userLocation:queryparam}&${request:queryparam}&${aggregation:queryparam}&${testType:queryparam}&from=${__from}&to=${__to}&orgId=1"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "canadacentral"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 288
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 133,
+      "links": [],
+      "options": {
+        "footer": {
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "count"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "CanadaCentral"
+          }
+        ]
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "alias": "$tag_requestName",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$aggregation"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "requestsRaw",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \n\nfrom(bucket: \"performance\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"result\"] == \"pass\")\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\n  |> aggregate()\n  |> pivot(rowKey:[\"s4hLocation\"], columnKey: [\"userLocation\"], valueColumn: \"_value\") \n  |> map(fn: (r) => ({r with Details: \"⏵\"}))\n  |> group() \n  ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "responseTime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "requestName",
+              "operator": "=~",
+              "value": "/^$request$/"
+            }
+          ]
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"performance\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"btpLocation\",\"s4hLocation\"])\r\n  |> mean()\r\n  |> pivot(rowKey:[\"userLocation\"], columnKey: [\"btpLocation\"], valueColumn: \"_value\") \r\n  |> group()  ",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Response Times (${aggregation})",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "_start": true,
+              "_stop": true,
+              "btpLocation": false,
+              "scenario": false,
+              "swedencentral": true
+            },
+            "indexByName": {
+              "CanadaCentral": 7,
+              "CanadaEast": 8,
+              "Details": 0,
+              "EastUS2": 9,
+              "SouthCentralUS": 10,
+              "_start": 5,
+              "_stop": 6,
+              "btpLocation": 3,
+              "connectionType": 2,
+              "s4hLocation": 4,
+              "scenario": 1
+            },
+            "renameByName": {
+              "Details": "",
+              "_stop": "",
+              "btpLocation": "BTP Location",
+              "canadaCentral": "",
+              "connectionType": "Connection Type",
+              "eastus2": "",
+              "s4hLocation": "S4H Location",
+              "scenario": "Scenario",
+              "userLocation": "User Location"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 60,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 0,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#e0b40057",
+                "value": 150
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "swedencentral"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "westeurope"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "canadacentral"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": 135,
+      "links": [],
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "asc"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "alias": "$tag_requestName",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$aggregation"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "requestsRaw",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: \"performance\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\n  |> filter(fn: (r) => r[\"result\"] == \"pass\")\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"userLocation\",\"s4hLocation\"])\n  |> aggregate()\n  |> pivot(rowKey:[\"userLocation\"], columnKey: [\"s4hLocation\"], valueColumn: \"_value\") \n  |> group() \n  ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "responseTime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "requestName",
+              "operator": "=~",
+              "value": "/^$request$/"
+            }
+          ]
+        }
+      ],
+      "title": " Response Times - by S4H Region (${aggregation})",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "_start": true,
+              "_stop": true,
+              "btpLocation": false,
+              "scenario": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "btpLocation": "BTP Location",
+              "connectionType": "Connection Type",
+              "userLocation": "User Location"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 60,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 0,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#e0b40057",
+                "value": 150
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ch20"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "eu20"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#FADE2A",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ca10"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "us21"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#5794F2",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 12
+      },
+      "id": 138,
+      "links": [],
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "asc"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "alias": "$tag_requestName",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$aggregation"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "requestsRaw",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: \"performance\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] != \"-\")\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"btpLocation\",\"userLocation\"])\n  |> aggregate()\n  |> pivot(rowKey:[\"userLocation\"], columnKey: [\"btpLocation\"], valueColumn: \"_value\") \n  |> group() \n  ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "responseTime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "requestName",
+              "operator": "=~",
+              "value": "/^$request$/"
+            }
+          ]
+        }
+      ],
+      "title": " Response Times - by BTP Region (${aggregation})",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "_start": true,
+              "_stop": true,
+              "btpLocation": false,
+              "scenario": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "btpLocation": "BTP Location",
+              "connectionType": "Connection Type",
+              "userLocation": "User Location"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 60,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 0,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#e0b40057",
+                "value": 150
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "APIM_direct"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#69bf9b",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "S4H_public"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#0c7ecf",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "APIM_scc"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ROUTER"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "S4H"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 20
+      },
+      "id": 136,
+      "links": [],
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "asc"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "alias": "$tag_requestName",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$aggregation"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "requestsRaw",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: \"performance\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"userLocation\",\"scenario\"])\n  |> aggregate()\n  |> pivot(rowKey:[\"userLocation\"], columnKey: [\"scenario\"], valueColumn: \"_value\")   \n  |> group()   ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "responseTime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "requestName",
+              "operator": "=~",
+              "value": "/^$request$/"
+            }
+          ]
+        }
+      ],
+      "title": "Response Times - by Scenario (${aggregation})",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "_start": true,
+              "_stop": true,
+              "btpLocation": false,
+              "scenario": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "btpLocation": "BTP Location",
+              "connectionType": "Connection Type",
+              "userLocation": "User Location"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 60,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 0,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#e0b40057",
+                "value": 150
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "APIM_direct"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#69bf9b",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "S4H_public"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#0c7ecf",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "APIM_scc"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "privatelink"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "scc"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "public"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 20
+      },
+      "id": 147,
+      "links": [],
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "asc"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "alias": "$tag_requestName",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$aggregation"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "requestsRaw",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: \"performance\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"userLocation\",\"connectionType\"])\n  |> aggregate()\n  |> pivot(rowKey:[\"userLocation\"], columnKey: [\"connectionType\"], valueColumn: \"_value\")   \n  |> group()   ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "responseTime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "requestName",
+              "operator": "=~",
+              "value": "/^$request$/"
+            }
+          ]
+        }
+      ],
+      "title": "Response Times - by Connection Type (${aggregation})",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "_start": true,
+              "_stop": true,
+              "btpLocation": false,
+              "scenario": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "btpLocation": "BTP Location",
+              "connectionType": "Connection Type",
+              "userLocation": "User Location"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 143,
+      "panels": [],
+      "title": "Insights",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "reqps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 0,
+        "y": 29
+      },
+      "id": 140,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "query": "from(bucket: \"performance\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"dataType\"] == \"TC\")  \r\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\r\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"_field\"])\r\n  |> aggregateWindow(every: 60s, fn: count, createEmpty: false)  \r\n  |> toFloat() \r\n  |> map(fn: (r) => ({ r with _value: float(v: r._value /float(v:60)) }))",
+          "refId": "A"
+        }
+      ],
+      "title": "Request Throughput",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 5,
+        "y": 29
+      },
+      "id": 141,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "query": "from(bucket: \"performance\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"receivedBytes\")\r\n  |> filter(fn: (r) => r[\"dataType\"] == \"TC\")  \r\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\r\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"_field\"])\r\n  |> aggregateWindow(every: 60s, fn: sum, createEmpty: false)  \r\n  |> toFloat() \r\n  |> map(fn: (r) => ({ r with _value: float(v: r._value /float(v: 60)) }))",
+          "refId": "A"
+        }
+      ],
+      "title": "Received Bytes Throughput",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 10,
+        "y": 29
+      },
+      "id": 144,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "max"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "query": "from(bucket: \"performance\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"allThreads\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"_field\"])\r\n  |> max()  \r\n  ",
+          "refId": "A"
+        }
+      ],
+      "title": "Active Users",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 14,
+        "y": 29
+      },
+      "id": 146,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "query": "from(bucket: \"performance\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"errorCount\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}/)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"_field\"])\r\n  |> sum()  ",
+          "refId": "A"
+        }
+      ],
+      "title": "Error Count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 29
+      },
+      "id": 145,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "query": "from(bucket: \"performance\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"dataType\"] == \"TC\")  \r\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\r\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}$/)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"_field\"])\r\n  |> count()  ",
+          "refId": "A"
+        }
+      ],
+      "title": "Request Count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 60,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 0,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#e0b40057",
+                "value": 150
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sales Order - top 10"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#a6e0ff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Manage Sales Orders"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "id": 148,
+      "links": [],
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "asc"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "alias": "$tag_requestName",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$aggregation"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "requestsRaw",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: \"performance\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\n  |> filter(fn: (r) => r[\"dataType\"] == \"TC\")  \n  |> filter(fn: (r) => r[\"result\"] == \"pass\")\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"requestName\",\"userLocation\"])\n  |> aggregate()\n  |> pivot(rowKey:[\"userLocation\"], columnKey: [\"requestName\"], valueColumn: \"_value\") \n  |> group() \n  ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "responseTime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "requestName",
+              "operator": "=~",
+              "value": "/^$request$/"
+            }
+          ]
+        }
+      ],
+      "title": "Response Times - by Request Group (${aggregation})",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "_start": true,
+              "_stop": true,
+              "btpLocation": false,
+              "scenario": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "btpLocation": "BTP Location",
+              "connectionType": "Connection Type",
+              "userLocation": "User Location"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "DS_JMETER"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 60,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 0,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "line"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#e0b40057",
+                "value": 150
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Sales Order - top 10"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#a6e0ff",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "id": 137,
+      "links": [],
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [
+            "mean",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "sortBy": "Mean",
+          "sortDesc": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "asc"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "alias": "$tag_requestName",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "DS_JMETER"
+          },
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "$aggregation"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "requestsRaw",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: \"performance\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\n  |> filter(fn: (r) => r[\"dataType\"] != \"TC\") \n  |> filter(fn: (r) => r[\"result\"] == \"pass\")\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"region\"] == \"${region}\")\n  |> filter(fn: (r) => r[\"type\"] =~ /${type:regex}/)\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"requestName\",\"userLocation\"])\n  |> aggregate()\n  |> pivot(rowKey:[\"userLocation\"], columnKey: [\"requestName\"], valueColumn: \"_value\") \n  |> group() \n  ",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "responseTime"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "requestName",
+              "operator": "=~",
+              "value": "/^$request$/"
+            }
+          ]
+        }
+      ],
+      "title": "Response Times - by Request (${aggregation})",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "_start": true,
+              "_stop": true,
+              "btpLocation": false,
+              "scenario": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "btpLocation": "BTP Location",
+              "connectionType": "Connection Type",
+              "userLocation": "User Location"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DS_JMETER"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"region\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)  ",
+        "description": "You can filter the data using scenario name",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Region",
+        "multi": false,
+        "name": "region",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"region\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)  ",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DS_JMETER"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"type\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)  ",
+        "description": "You can filter the data using scenario name",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Test Type",
+        "multi": false,
+        "name": "type",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"type\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)  ",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DS_JMETER"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"scenario\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)  ",
+        "description": "You can filter the data using scenario name",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Scenario",
+        "multi": true,
+        "name": "scenario",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"scenario\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)  ",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DS_JMETER"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"userLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "description": "You can filter the data using run id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "User Location",
+        "multi": true,
+        "name": "userLocation",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"userLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DS_JMETER"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"connectionType\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Connection Type",
+        "multi": true,
+        "name": "connectionType",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"connectionType\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DS_JMETER"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"btpLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "description": "You can filter the data using run id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "BTP Location",
+        "multi": true,
+        "name": "btpLocation",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"btpLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DS_JMETER"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"s4hLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)\r\n",
+        "description": "You can filter the data using run id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "S4H Location",
+        "multi": true,
+        "name": "s4hLocation",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"s4hLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)\r\n",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "influxdb",
+          "uid": "DS_JMETER"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"requestName\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\" and r.scenario =~ /${scenario:regex}/ and r.userLocation =~ /${userLocation:regex}/ and r.btpLocation =~ /${btpLocation:regex}/ and r.s4hLocation =~ /${s4hLocation:regex}/ and r.dataType == \"TC\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Request",
+        "multi": true,
+        "name": "request",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: \"performance\",\r\n  tag: \"requestName\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.region == \"${region}\" and r.type == \"${type}\" and r.scenario =~ /${scenario:regex}/ and r.userLocation =~ /${userLocation:regex}/ and r.btpLocation =~ /${btpLocation:regex}/ and r.s4hLocation =~ /${s4hLocation:regex}/ and r.dataType == \"TC\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Median",
+          "value": "0.50"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Aggregation",
+        "multi": false,
+        "name": "aggregation",
+        "options": [
+          {
+            "selected": false,
+            "text": "Average",
+            "value": "0.0"
+          },
+          {
+            "selected": true,
+            "text": "Median",
+            "value": "0.50"
+          },
+          {
+            "selected": false,
+            "text": "90th Percentile",
+            "value": "0.90"
+          },
+          {
+            "selected": false,
+            "text": "95th Percentile",
+            "value": "0.95"
+          },
+          {
+            "selected": false,
+            "text": "99th Percentile",
+            "value": "0.99"
+          },
+          {
+            "selected": false,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "Average : 0.0, Median : 0.50, 90th Percentile : 0.90, 95th Percentile : 0.95, 99th Percentile : 0.99, ",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "utc",
+  "title": "Overview",
+  "uid": "Overview_I",
+  "version": 6,
+  "weekStart": ""
+}

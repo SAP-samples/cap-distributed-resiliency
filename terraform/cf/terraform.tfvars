@@ -1,0 +1,10 @@
+globalaccount       = "tfe"
+region              = "ca10"
+subaccount_name     = "Performance Test BTP Montreal TF"
+parent_directory    = "7679d598-bfcb-4b51-8100-f3877a31eb53"
+subaccount_admins         = ["shanthakumar.krishnaswamy@sap.com"]
+subaccount_service_admins = ["shanthakumar.krishnaswamy@sap.com"]
+cf_space_name        = "dev"
+cf_space_managers   = ["shanthakumar.krishnaswamy@sap.com"]
+cf_space_developers = ["shanthakumar.krishnaswamy@sap.com"]
+cf_space_auditors   = []

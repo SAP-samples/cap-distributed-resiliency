@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "InfluxDBUploader",
+            "request": "launch",
+            "mainClass": "com.msft.sap.performance.test.result.uploader.InfluxDBUploader",
+            "projectName": "result-uploader"
+        },
+        {
+            "type": "java",
+            "name": "ParameterConfig",
+            "request": "launch",
+            "mainClass": "com.msft.sap.performance.test.configurator.ParameterConfig",
+            "projectName": "test-configurator",
+            "args": "-j  C:\\SAPDevelop\\TFE\\HA\\Testing\\JMeter\\PerformanceTest\\msft-sap-performancetests\\performance-test\\config\\WORKZONE\\westeurope-public.json -p C:\\SAPDevelop\\TFE\\HA\\Testing\\JMeter\\PerformanceTest\\msft-sap-performancetests\\performance-test\\lib\\test-configurator\\xyz.properties",
+        }
+    ]
+}

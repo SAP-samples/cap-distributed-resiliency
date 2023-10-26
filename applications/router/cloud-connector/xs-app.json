@@ -1,0 +1,20 @@
+{
+  "welcomeFile": "/resources/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/resources/(.*)$",
+      "target": "$1",
+      "csrfProtection":true,
+      "localDir": "resources",
+      "authenticationType":"xsuaa"
+    },
+    {
+      "source": "^/(.*)$",
+      "target": "$1",
+      "csrfProtection": true,
+      "destination": "S4H-SCC",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}

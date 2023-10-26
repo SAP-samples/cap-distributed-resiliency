@@ -1,0 +1,3842 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "This dashboard to present Jmeter result",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 17444,
+  "graphTooltip": 1,
+  "id": 18,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 123,
+      "panels": [],
+      "title": "Summary",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "fbltHbJ4k"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "transparent",
+            "mode": "fixed"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false,
+            "minWidth": 60
+          },
+          "decimals": 2,
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "dark-green",
+                  "index": 0
+                },
+                "to": 150
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 151,
+                "result": {
+                  "color": "dark-yellow",
+                  "index": 1
+                },
+                "to": 500
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 501,
+                "result": {
+                  "color": "dark-red",
+                  "index": 2
+                },
+                "to": 9999
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Error Rate"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "decimals"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "auto"
+              },
+              {
+                "id": "custom.align",
+                "value": "right"
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "dark-green",
+                      "value": null
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 0.05
+                    },
+                    {
+                      "color": "dark-red",
+                      "value": 0.1
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "color"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-text"
+              },
+              {
+                "id": "custom.width",
+                "value": 83
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "RT (Max)"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "from": 1,
+                      "result": {
+                        "color": "dark-green",
+                        "index": 0
+                      },
+                      "to": 500
+                    },
+                    "type": "range"
+                  },
+                  {
+                    "options": {
+                      "from": 201,
+                      "result": {
+                        "color": "yellow",
+                        "index": 1
+                      },
+                      "to": 500
+                    },
+                    "type": "range"
+                  },
+                  {
+                    "options": {
+                      "from": 501,
+                      "result": {
+                        "color": "semi-dark-orange",
+                        "index": 2
+                      },
+                      "to": 1000
+                    },
+                    "type": "range"
+                  },
+                  {
+                    "options": {
+                      "from": 1001,
+                      "result": {
+                        "color": "dark-red",
+                        "index": 3
+                      },
+                      "to": 999999
+                    },
+                    "type": "range"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 115
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Scenario"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 77
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "BTP Location"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "na": {
+                        "index": 0,
+                        "text": "-"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "custom.width",
+                "value": 106
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "number"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "from": 0,
+                      "result": {
+                        "color": "dark-green",
+                        "index": 0
+                      },
+                      "to": 150
+                    },
+                    "type": "range"
+                  },
+                  {
+                    "options": {
+                      "from": 150,
+                      "result": {
+                        "color": "dark-yellow",
+                        "index": 1
+                      },
+                      "to": 500
+                    },
+                    "type": "range"
+                  },
+                  {
+                    "options": {
+                      "from": 500,
+                      "result": {
+                        "color": "dark-red",
+                        "index": 2
+                      },
+                      "to": 99999
+                    },
+                    "type": "range"
+                  }
+                ]
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-text"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total Requests"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "auto"
+              },
+              {
+                "id": "custom.width",
+                "value": 111
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "User Location"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 111
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Connection Type"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 126
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "S4H Location"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 118
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Errors"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 129
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "from": 1,
+                      "result": {
+                        "color": "dark-red",
+                        "index": 0
+                      },
+                      "to": 100
+                    },
+                    "type": "range"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Connect"
+            },
+            "properties": [
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 124,
+      "links": [],
+      "options": {
+        "footer": {
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "mean"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "RT"
+          }
+        ]
+      },
+      "pluginVersion": "9.3.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)  \r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\", \"btpLocation\",\"s4hLocation\"]) \r\n  |> count()\r\n  |> group()\r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"_value\"])",
+          "refId": "Request Name & Count",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)  \r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregate()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"RT (Avg)\"})\r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"RT (Avg)\"])  ",
+          "refId": "Response Time Avg",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)  \r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregate()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"RT (pctl)\"})  \r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"RT (pctl)\"])  ",
+          "refId": "Response Time Median",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)  \r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> toFloat()\r\n  |> stddev()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"RT (Deviation)\"})  \r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"RT (Deviation)\"])  ",
+          "refId": "Response Time deviation",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> max()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"RT (Max)\"})  \r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"btpLocation\",\"connectionType\",\"s4hLocation\",\"RT (Max)\"])",
+          "refId": "Response Time Max",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "hide": false,
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"latency\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)   \r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\", \"btpLocation\",\"s4hLocation\"])\r\n  |> aggregate()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"Latency\"})\r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"Latency\"])",
+          "refId": "Latency"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "hide": false,
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"connectTime\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)  \r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregate()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"Connect Time\"})  \r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"Connect Time\"])",
+          "refId": "ConnectTime"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "failuresPercentages = () => {\r\n\r\ncountResponseTime=from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/) \r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> count()\r\n  |> group()\r\n  |> toFloat()\r\n  |> keep(columns: [\"_value\", \"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n\r\n  \r\nsumerrorCount=from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"errorCount\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)  \r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> sum()\r\n  |> group()\r\n  |> toFloat()\r\n  |> keep(columns: [\"_value\", \"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n\r\n  return join(\r\n      tables:{countResponseTime:countResponseTime, sumerrorCount:sumerrorCount},\r\n      on:[\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"]\r\n    )\r\n    |> map(fn:(r) => ({\r\n             \"scenario\":r.scenario,\r\n             \"userLocation\": r.userLocation,\r\n             \"connectionType\": r.connectionType,\r\n             \"btpLocation\": r.btpLocation,\r\n             \"s4hLocation\": r.s4hLocation,\r\n             \"Error Rate\": r._value_sumerrorCount / r._value_countResponseTime         \r\n    }))       \r\n}\r\nfailuresPercentages()",
+          "refId": "Error %",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "hide": false,
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"statistics-scc-total\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregate()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"SCC Time\"})\r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"SCC Time\"])",
+          "refId": "SCC Time"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "hide": false,
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"statistics-total\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregate()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"S4H Time\"})\r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"S4H Time\"])\r\n",
+          "refId": "S4H Time"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "hide": false,
+          "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"statistics-icmtotal\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregate()\r\n  |> group()\r\n  |> rename(columns: {\"_value\": \"ICM Time\"})\r\n  |> keep(columns: [\"scenario\", \"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\",\"ICM Time\"])",
+          "refId": "ICM Time"
+        }
+      ],
+      "title": "Regional Metrics (${aggregation})",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "RT (Avg)": true,
+              "RT (Max)": false
+            },
+            "indexByName": {
+              "Connect Time": 11,
+              "Error Rate": 15,
+              "ICM Time": 13,
+              "Latency": 10,
+              "RT (Avg)": 6,
+              "RT (Deviation)": 8,
+              "RT (Max)": 9,
+              "RT (pctl)": 7,
+              "S4H Time": 14,
+              "SCC Time": 12,
+              "_value": 5,
+              "btpLocation": 3,
+              "connectionType": 2,
+              "s4hLocation": 4,
+              "scenario": 0,
+              "userLocation": 1
+            },
+            "renameByName": {
+              "Connect Time": "Connect",
+              "Error Rate": "Errors",
+              "ICM Time": "ICM",
+              "Latency": "Latency",
+              "RT (Avg)": "RT (avg)",
+              "RT (Deviation)": "RT (std dev)",
+              "RT (Max)": "RT (max)",
+              "RT (Median)": "RT (median)",
+              "RT (pctl)": "RT",
+              "S4H Time": "GW",
+              "SCC Time": "SCC",
+              "_value": "Total Requests",
+              "btpLocation": "BTP Location",
+              "connectionType": "Connection Type",
+              "s4hLocation": "S4H Location",
+              "scenario": "Scenario",
+              "userLocation": "User Location"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 146,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "Response Time, ms",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 150
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "meanActiveThreads"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Virtual Users"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Virtual Users"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "short"
+                  },
+                  {
+                    "id": "custom.axisLabel",
+                    "value": "Virtual Users"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 15,
+            "w": 24,
+            "x": 0,
+            "y": 2
+          },
+          "id": 130,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$aggregation"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "responseTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "=~",
+                  "value": "/^$request$/"
+                }
+              ]
+            }
+          ],
+          "title": "Response Times (${aggregation})",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "Response Time, ms",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 150
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "meanActiveThreads"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Virtual Users"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Virtual Users"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "short"
+                  },
+                  {
+                    "id": "custom.axisLabel",
+                    "value": "Virtual Users"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 17
+          },
+          "id": 129,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$aggregation"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"statistics-icmtotal\")\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "responseTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "=~",
+                  "value": "/^$request$/"
+                }
+              ]
+            }
+          ],
+          "title": "ICM Time (${aggregation}) ",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "Response Time, ms",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 60
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "meanActiveThreads"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Virtual Users"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Virtual Users"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "short"
+                  },
+                  {
+                    "id": "custom.axisLabel",
+                    "value": "Virtual Users"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 24,
+            "x": 0,
+            "y": 29
+          },
+          "id": 140,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$aggregation"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"statistics-total\")\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "responseTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "=~",
+                  "value": "/^$request$/"
+                }
+              ]
+            }
+          ],
+          "title": "S4H Time (${aggregation}) ",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "Response Time, ms",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "meanActiveThreads"
+                },
+                "properties": [
+                  {
+                    "id": "displayName",
+                    "value": "Virtual Users"
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Virtual Users"
+                },
+                "properties": [
+                  {
+                    "id": "unit",
+                    "value": "short"
+                  },
+                  {
+                    "id": "custom.axisLabel",
+                    "value": "Virtual Users"
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 41
+          },
+          "id": 128,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "dsType": "influxdb",
+              "groupBy": [
+                {
+                  "params": [
+                    "$aggregation"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \nfrom(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\n  |> filter(fn: (r) => r[\"_field\"] == \"statistics-scc-total\")\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}/)\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\n  |> group(columns: [\"scenario\",\"userLocation\",\"btpLocation\",\"s4hLocation\"])\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "responseTime"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "=~",
+                  "value": "/^$request$/"
+                }
+              ]
+            },
+            {
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": " from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"virtualUsers\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"meanActiveThreads\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> aggregateWindow(every: [[aggregation]], fn: mean, createEmpty: false)\r\n  |> keep(columns: [\"_time\", \"_value\", \"_field\"])",
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "SCC Time (${aggregation}) ",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Response Time",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "UgPq-YFnk"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 38,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 150
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 14
+          },
+          "id": 77,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"latency\")  \r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  \r\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "latency"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Latency (${aggregation})",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 22
+          },
+          "id": 86,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"connectTime\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  \r\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "latency"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Connection Time (${aggregation})",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 150
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 31
+          },
+          "id": 87,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"processingTime\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false) ",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "latency"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Processing Time = Latency - Connect Time (${aggregation})",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 41
+          },
+          "id": 50,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "Sent Bytes",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean()\r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"allThreads\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false) ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "receivedBytes"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "!=",
+                  "value": "select tag value"
+                }
+              ]
+            }
+          ],
+          "title": "Threads Over Time (${aggregation})",
+          "transformations": [],
+          "type": "timeseries"
+        }
+      ],
+      "title": "Network Traffic",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 136,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 150
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 15
+          },
+          "id": 131,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "Sent Bytes",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean()\r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"result\"] == \"fail\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])  \r\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "receivedBytes"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "!=",
+                  "value": "select tag value"
+                }
+              ]
+            },
+            {
+              "alias": "Received Bytes",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"sentBytes\")\r\n  |> filter(fn: (r) => r[\"scenario\"] == \"${scenario}\")\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> group(columns: [\"_field\"])\r\n  |> aggregateWindow(every: [[aggregation]], fn: mean, createEmpty: false)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "receivedBytes"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "!=",
+                  "value": "select tag value"
+                }
+              ]
+            }
+          ],
+          "title": "Failed Request Response Time (${aggregation})",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 150
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 25
+          },
+          "id": 139,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "Sent Bytes",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean()\r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"responseTime\")\r\n  |> filter(fn: (r) => r[\"result\"] == \"pass\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}/)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])  \r\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "receivedBytes"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "!=",
+                  "value": "select tag value"
+                }
+              ]
+            },
+            {
+              "alias": "Received Bytes",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"sentBytes\")\r\n  |> filter(fn: (r) => r[\"scenario\"] == \"${scenario}\")\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> group(columns: [\"_field\"])\r\n  |> aggregateWindow(every: [[aggregation]], fn: mean, createEmpty: false)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "receivedBytes"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "!=",
+                  "value": "select tag value"
+                }
+              ]
+            }
+          ],
+          "title": "Pass Request Response Time (${aggregation})",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "opacity",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 0,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 24,
+            "x": 0,
+            "y": 35
+          },
+          "id": 134,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "sum"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "Sent Bytes",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": false,
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"errorCount\")\r\n  |> filter(fn: (r) => r[\"_value\"] == 1)\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => if exists (r[\"requestName\"]) then r[\"requestName\"]=~ /${request:regex}$/ else true)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])  \r\n  |> aggregateWindow(every: v.windowPeriod, fn: count, createEmpty: false)  ",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "receivedBytes"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "!=",
+                  "value": "select tag value"
+                }
+              ]
+            },
+            {
+              "alias": "Received Bytes",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "hide": true,
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "from(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"sentBytes\")\r\n  |> filter(fn: (r) => r[\"scenario\"] == \"${scenario}\")\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> group(columns: [\"_field\"])\r\n  |> aggregateWindow(every: [[aggregation]], fn: mean, createEmpty: false)",
+              "rawQuery": true,
+              "refId": "B",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "receivedBytes"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": [
+                {
+                  "key": "requestName",
+                  "operator": "!=",
+                  "value": "select tag value"
+                }
+              ]
+            }
+          ],
+          "title": "Failed Request Count",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "left",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "requestName"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 461
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 45
+          },
+          "id": 95,
+          "links": [],
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": true
+            },
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "9.3.1",
+          "targets": [
+            {
+              "alias": "",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "orderByTime": "ASC",
+              "policy": "default",
+              "query": "\r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"errorCount\")\r\n  |> filter(fn: (r) => r[\"_value\"] == 1)\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> group(columns: [\"requestName\", \"responseCode\", \"errorMessage\", \"errorResponseBody\"])\r\n  |> sum()\r\n  |> group()\r\n  |> keep(columns: [\"requestName\", \"errorMessage\", \"errorResponseBody\", \"responseCode\", \"_value\"])\r\n  |> rename(columns: {\"_value\": \"Count\"})",
+              "rawQuery": true,
+              "refId": "A",
+              "resultFormat": "table",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "value"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "Error Summary",
+          "transformations": [
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {},
+                "indexByName": {
+                  "Count": 4,
+                  "errorMessage": 2,
+                  "errorResponseBody": 3,
+                  "requestName": 0,
+                  "responseCode": 1
+                },
+                "renameByName": {}
+              }
+            }
+          ],
+          "type": "table"
+        }
+      ],
+      "title": "Failed Request",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 142,
+      "panels": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 91
+          },
+          "id": 143,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping-s4h\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}/)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  \r\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "latency"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "S4H Ping Time (${aggregation})",
+          "transformations": [],
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "fbltHbJ4k"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 10,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineWidth": 2,
+                "pointSize": 6,
+                "scaleDistribution": {
+                  "log": 2,
+                  "type": "symlog"
+                },
+                "showPoints": "always",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "dashed"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#e0b40057",
+                    "value": 20
+                  }
+                ]
+              },
+              "unit": "ms"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "95 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#F9934E",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "99 perc"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#E24D42",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Max"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#BF1B00",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 100
+          },
+          "id": 144,
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true,
+              "sortBy": "Mean",
+              "sortDesc": false
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "8.5.4",
+          "targets": [
+            {
+              "alias": "$tag_requestName",
+              "datasource": {
+                "type": "influxdb",
+                "uid": "fbltHbJ4k"
+              },
+              "groupBy": [
+                {
+                  "params": [
+                    "$__interval"
+                  ],
+                  "type": "time"
+                },
+                {
+                  "params": [
+                    "requestName"
+                  ],
+                  "type": "tag"
+                },
+                {
+                  "params": [
+                    "null"
+                  ],
+                  "type": "fill"
+                }
+              ],
+              "measurement": "requestsRaw",
+              "orderByTime": "ASC",
+              "policy": "autogen",
+              "query": "aggregate = if  ${aggregation} > 0 then (tables=<-) => tables |>  quantile(q: ${aggregation}) else (tables=<-) => tables |>  mean() \r\nfrom(bucket: v.bucket)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"requestsRaw\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping-scc\")\r\n  |> filter(fn: (r) => r[\"scenario\"] =~ /${scenario:regex}/)\r\n  |> filter(fn: (r) => r[\"userLocation\"] =~ /${userLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"btpLocation\"] =~ /${btpLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"s4hLocation\"] =~ /${s4hLocation:regex}/)\r\n  |> filter(fn: (r) => r[\"requestName\"] =~ /${request:regex}/)\r\n  |> filter(fn: (r) => r[\"connectionType\"] =~ /${connectionType:regex}/)\r\n  |> group(columns: [\"scenario\",\"userLocation\",\"connectionType\",\"btpLocation\",\"s4hLocation\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: (column, tables=<-) => tables |> aggregate(), createEmpty: false)  \r\n",
+              "rawQuery": true,
+              "refId": "D",
+              "resultFormat": "time_series",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "latency"
+                    ],
+                    "type": "field"
+                  },
+                  {
+                    "params": [],
+                    "type": "mean"
+                  }
+                ]
+              ],
+              "tags": []
+            }
+          ],
+          "title": "SCC Ping Time (${aggregation})",
+          "transformations": [],
+          "type": "timeseries"
+        }
+      ],
+      "title": "Ping",
+      "type": "row"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": [
+            "APIM"
+          ],
+          "value": [
+            "APIM"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "fbltHbJ4k"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"scenario\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "description": "You can filter the data using run id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Scenario",
+        "multi": true,
+        "name": "scenario",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"scenario\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "fbltHbJ4k"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"userLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "description": "You can filter the data using run id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "User Location",
+        "multi": true,
+        "name": "userLocation",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"userLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": [
+            "public"
+          ],
+          "value": [
+            "public"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "fbltHbJ4k"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"connectionType\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Connection Type",
+        "multi": true,
+        "name": "connectionType",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"connectionType\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": [
+            "ca10"
+          ],
+          "value": [
+            "ca10"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "fbltHbJ4k"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"btpLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "description": "You can filter the data using run id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "BTP Location",
+        "multi": true,
+        "name": "btpLocation",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"btpLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\" and r.scenario =~ /${scenario:regex}/,\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": [
+            "canadacentral"
+          ],
+          "value": [
+            "canadacentral"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "fbltHbJ4k"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"s4hLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "description": "You can filter the data using run id",
+        "hide": 0,
+        "includeAll": true,
+        "label": "S4H Location",
+        "multi": true,
+        "name": "s4hLocation",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"s4hLocation\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "influxdb",
+          "uid": "fbltHbJ4k"
+        },
+        "definition": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"requestName\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Request",
+        "multi": true,
+        "name": "request",
+        "options": [],
+        "query": "import \"influxdata/influxdb/schema\"\r\n\r\nschema.tagValues(\r\n  bucket: v.bucket,\r\n  tag: \"requestName\",\r\n  predicate: (r) => r._measurement == \"requestsRaw\",\r\n  start: v.timeRangeStart,\r\n  stop: v.timeRangeStop\r\n)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Median",
+          "value": "0.50"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Aggregation",
+        "multi": false,
+        "name": "aggregation",
+        "options": [
+          {
+            "selected": false,
+            "text": "Average",
+            "value": "0.0"
+          },
+          {
+            "selected": true,
+            "text": "Median",
+            "value": "0.50"
+          },
+          {
+            "selected": false,
+            "text": "90th Percentile",
+            "value": "0.90"
+          },
+          {
+            "selected": false,
+            "text": "95th Percentile",
+            "value": "0.95"
+          },
+          {
+            "selected": false,
+            "text": "99th Percentile",
+            "value": "0.99"
+          },
+          {
+            "selected": false,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "Average : 0.0, Median : 0.50, 90th Percentile : 0.90, 95th Percentile : 0.95, 99th Percentile : 0.99, ",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "2023-06-05T07:09:09.340Z",
+    "to": "2023-06-06T07:09:09.340Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Details",
+  "uid": "Details",
+  "version": 6,
+  "weekStart": ""
+}

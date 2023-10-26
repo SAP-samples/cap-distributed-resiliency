@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb:2.5.1-alpine
+    env_file: 
+      - ./influxdb/config.env
+    ports:
+      - '8086:8086'
+    volumes:
+      - influxdb-lib:/var/lib/influxdb2
+    restart: always
+    privileged: true
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-oss:9.3.1
+    env_file: 
+      - ./grafana/config.env
+    links:
+      - influxdb:influxdb
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./grafana:/etc/grafana:ro
+      - grafana-lib:/var/lib/grafana
+      - grafana-log:/var/log/grafana
+    depends_on:
+      - influxdb
+    restart: always
+    privileged: true
+volumes:
+  influxdb-lib:
+    external: false
+  grafana-lib:
+    external: false
+  grafana-log:
+    external: false

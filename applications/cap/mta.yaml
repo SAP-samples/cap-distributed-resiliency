@@ -1,0 +1,90 @@
+---
+_schema-version: '3.1'
+ID: cap
+version: 1.0.0-SNAPSHOT
+description: "CAP Performance Test"
+parameters:
+  enable-parallel-deployments: true
+modules:
+# --------------------- CAP PL MODULE ---------------------
+  - name: cap-pl
+# ------------------------------------------------------------
+    type: java
+    path: private-link
+    parameters:
+      buildpack: java_buildpack
+    properties:
+      SPRING_PROFILES_ACTIVE: cloud
+    build-parameters:
+      builder: custom
+      commands:
+        - mvn clean package -DskipTests=true
+      build-result: srv/target/*-exec.jar
+    provides:
+      - name: srv-api-pl # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: perftest-destination  
+      - name: perftest-connectivity 
+      - name: perftest-logging
+# --------------------- CAP SCC MODULE ---------------------
+  - name: cap-scc
+# ------------------------------------------------------------
+    type: java
+    path: cloud-connector
+    parameters:
+      buildpack: java_buildpack
+    properties:
+      SPRING_PROFILES_ACTIVE: cloud
+    build-parameters:
+      builder: custom
+      commands:
+        - mvn clean package -DskipTests=true
+      build-result: srv/target/*-exec.jar
+    provides:
+      - name: srv-api-scc # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: perftest-destination  
+      - name: perftest-connectivity 
+      - name: perftest-logging
+# --------------------- CAP PUBLIC MODULE ---------------------
+  - name: cap-public
+# ------------------------------------------------------------
+    type: java
+    path: public
+    parameters:
+      buildpack: java_buildpack
+    properties:
+      SPRING_PROFILES_ACTIVE: cloud
+    build-parameters:
+      builder: custom
+      commands:
+        - mvn clean package -DskipTests=true
+      build-result: srv/target/*-exec.jar
+    provides:
+      - name: srv-api-public # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: perftest-destination  
+      - name: perftest-connectivity 
+      - name: perftest-logging
+resources:
+  - name: perftest-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite    
+  - name: perftest-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite    
+  - name: perftest-logging
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite    

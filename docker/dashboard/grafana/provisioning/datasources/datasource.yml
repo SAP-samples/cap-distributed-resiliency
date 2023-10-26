@@ -1,0 +1,15 @@
+apiVersion: 1
+
+datasources:
+  - name: JMeter
+    uid: "fbltHbJ4k"
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    secureJsonData:
+      token: Secret-Auth-Token
+    jsonData:
+      version: Flux
+      organization: perfinsights
+      defaultBucket: jmeter
+      tlsSkipVerify: true

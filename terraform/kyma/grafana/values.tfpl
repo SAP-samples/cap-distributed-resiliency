@@ -1,0 +1,52 @@
+grafana:
+  testFramework:
+    enabled: false
+  podPortName: dashboard
+  service:
+      enabled: true
+      type: ClusterIP
+      port: 3000
+      targetPort: 3000
+        # targetPort: 4181 To be used with a proxy extraContainer
+      annotations: {}
+      labels: 
+        app: dashboard
+      portName: service
+  ingress:
+    enabled: false
+  adminUser: admin
+  adminPassword: Welcome1
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: DS_JMETER
+        type: influxdb
+        uid: DS_JMETER
+        url: ${influxdb_url}
+        secureJsonData:
+          token: Secret-Auth-Token
+        jsonData:
+          version: Flux
+          organization: perfinsights
+          defaultBucket: jmeter
+          tlsSkipVerify: true
+  dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+        - name: 'default'
+          orgId: 1
+          folder: ''
+          type: file
+          disableDeletion: true
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/default
+  dashboards:
+    default:
+      %{ for dashboard in dashboards ~}
+${indent(4, replace(replace(dashboard, ".json", ""), "./", ""))}:
+        json: |
+          ${indent(10, file("./grafana/dashboards/${dashboard}"))}
+      %{ endfor }

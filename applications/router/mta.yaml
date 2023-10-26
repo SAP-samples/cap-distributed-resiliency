@@ -1,0 +1,69 @@
+---
+_schema-version: '3.1'
+ID: router
+version: 1.0.0-SNAPSHOT
+description: "Router Application"
+parameters:
+  enable-parallel-deployments: true
+modules:
+# --------------------- APPROUTER PL MODULE ---------------------
+  - name: router-pl
+# ------------------------------------------------------------
+    type: nodejs
+    path: private-link
+    parameters:
+      memory: 1024M
+      disk-quota: 512M
+    requires:
+      - name: perftest-destination  
+      - name: perftest-connectivity 
+      - name: perftest-logging
+      - name: perftest-xsuaa
+# --------------------- APPROUTER SCC MODULE ---------------------
+  - name: router-scc
+# ------------------------------------------------------------
+    type: nodejs
+    path: cloud-connector
+    parameters:
+      memory: 1024M
+      disk-quota: 512M
+    requires:
+      - name: perftest-destination  
+      - name: perftest-connectivity 
+      - name: perftest-logging
+      - name: perftest-xsuaa      
+# --------------------- APPROUTER PUBLIC MODULE ---------------------
+  - name: router-public
+# ------------------------------------------------------------
+    type: nodejs
+    path: public
+    parameters:
+      memory: 1024M
+      disk-quota: 512M
+    requires:
+      - name: perftest-destination  
+      - name: perftest-connectivity 
+      - name: perftest-logging
+      - name: perftest-xsuaa
+resources:
+  - name: perftest-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite    
+  - name: perftest-connectivity
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite    
+  - name: perftest-logging
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: application-logs
+      service-plan: lite
+  - name: perftest-xsuaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json    
