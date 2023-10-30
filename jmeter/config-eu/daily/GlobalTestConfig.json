@@ -1,0 +1,42 @@
+{
+    "Region": "EU",
+    "Type": "Daily",
+    "ThreadGroup": {
+        "Threads": 5,
+        "Rampup": 10,
+        "Loop": 250
+    },
+    "ScenarioConfigFolders": "S4H,CAP,ROUTER",
+    "JMeterWorker": {
+        "ExecutionType": "sequential",
+        "Hosts": [
+              {
+                "IPAddress" : "10.41.0.4",
+                "Name" : "WestEurope"
+              },
+              {
+                "IPAddress" : "10.42.0.4",
+                "Name" : "NorthEurope"
+              },
+              {
+                "IPAddress" : "10.43.0.4",
+                "Name" : "SwedenCentral"
+              },
+              {
+                "IPAddress" : "10.44.0.4",
+                "Name" : "UKSouth"
+              },
+              {
+                "IPAddress" : "10.45.0.4",
+                "Name" : "GermanyWestCentral"
+              }
+        ]
+    },
+    "DBConfig": {
+        "Url": "<Replace with InfluxDb Url>",
+        "Token": "<Replace with Authentication Token>",
+        "Organization": "perfinsights",
+        "Bucket": "performance"
+    },
+    "sample_variables": "grpLabel,Scenario,ConnectionType,BTPHost_Name,SCCHost_Name,S4HHost_Name,UserHost_Name,statistics-approuter-total,statistics-scc-total,statistics-total,statistics-icmtotal,ping-s4h"
+}

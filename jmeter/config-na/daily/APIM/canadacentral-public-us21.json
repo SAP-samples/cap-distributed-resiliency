@@ -1,0 +1,21 @@
+{
+    "Scenario": "APIM",
+    "ConnectionType": "public",
+    "BTPHost": {
+        "Name": "us21",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "CanadaCentral",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "CanadaCentral",
+        "IPAddress": "20.104.99.158"
+    },
+    "HTTPRequest": {
+        "Url": "https://tfe-azure.apimanagement.us21.hana.ondemand.com/API_SO_CANADACENTRAL_PUBLIC/A_SalesOrder",
+        "Username": "BPINST",
+        "Password": "Replace with Password"
+    }
+}

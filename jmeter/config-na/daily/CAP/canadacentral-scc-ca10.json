@@ -1,0 +1,21 @@
+{
+    "Scenario": "CAP",
+    "ConnectionType": "scc",
+    "BTPHost": {
+        "Name": "ca10",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "CanadaCentral",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "CanadaCentral",
+        "IPAddress": "20.104.99.158"
+    },
+    "HTTPRequest": {
+        "Url": "https://performance-test-btp-montreal-dev-cap-scc.cfapps.ca10.hana.ondemand.com/odata/v4/SalesOrderService/SalesOrders",
+        "Username": "BPINST",
+        "Password": "Replace with Password"
+    }
+}

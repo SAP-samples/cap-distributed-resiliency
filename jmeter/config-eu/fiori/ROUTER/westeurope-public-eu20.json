@@ -1,0 +1,22 @@
+{
+    
+    "Scenario": "ROUTER",
+    "ConnectionType": "public",
+    "BTPHost": {
+        "Name": "eu20",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "WestEurope",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "WestEurope",
+        "IPAddress": "52.174.124.79"
+    },
+    "HTTPRequest": {
+        "Url": "https://technical-field-enablement-performance-test-btp-amsterd55a0057a.cfapps.eu20-001.hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder/$count#1",
+        "Username": "<Replace with User Name>",
+        "Password": "<Replace with Password>"
+    }
+}

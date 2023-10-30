@@ -1,0 +1,42 @@
+{
+    "Region": "AP",
+    "Type": "Daily",
+    "ThreadGroup": {
+        "Threads": 5,
+        "Rampup": 10,
+        "Loop": 250
+    },
+    "ScenarioConfigFolders": "S4H,CAP,ROUTER",
+    "JMeterWorker": {
+        "ExecutionType": "sequential",
+        "Hosts": [
+            {
+                "IPAddress": "10.51.0.4",
+                "Name": "KoreaCentral"
+            },
+            {
+                "IPAddress": "10.52.0.4",
+                "Name": "JapanEast"
+            },
+            {
+                "IPAddress": "10.53.0.4",
+                "Name": "JapanWest"
+            },
+            {
+                "IPAddress": "10.54.0.4",
+                "Name": "EastAsia"
+            },
+            {
+                "IPAddress": "10.55.0.4",
+                "Name": "SoutheastAsia"
+            }
+        ]
+    },
+    "DBConfig": {
+        "Url": "<Replace with InfluxDb Url>",
+        "Token": "<Replace with Authentication Token>",
+        "Organization": "perfinsights",
+        "Bucket": "performance"
+    },
+    "sample_variables": "grpLabel,Scenario,ConnectionType,BTPHost_Name,SCCHost_Name,S4HHost_Name,UserHost_Name,statistics-approuter-total,statistics-scc-total,statistics-total,statistics-icmtotal"
+}

@@ -1,0 +1,21 @@
+{
+    "Scenario": "ROUTER",
+    "ConnectionType": "public",
+    "BTPHost": {
+        "Name": "ap12",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "KoreaCentral",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "KoreaCentral",
+        "IPAddress": "20.214.138.23"
+    },
+    "HTTPRequest": {
+        "Url": "https://performance-test-btp-seoul-dev-router-public.cfapps.ap12.hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder/$count#1",
+        "Username": "<Replace with User Name>",
+        "Password": "<Replace with Password>"
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "Region": "NA",
+    "Type": "Fiori",
+    "ThreadGroup": {
+        "Threads": 5,
+        "Rampup": 10,
+        "Loop": 250
+    },
+    "ScenarioConfigFolders": "S4H,ROUTER,WORKZONE",
+    "JMeterWorker": {
+        "ExecutionType": "sequential",
+        "Hosts": [
+            {
+                "IPAddress": "10.31.0.4",
+                "Name": "CanadaCentral"
+            },
+            {
+                "IPAddress": "10.32.0.4",
+                "Name": "CanadaEast"
+            },
+            {
+                "IPAddress": "10.33.0.4",
+                "Name": "EastUS2"
+            },
+            {
+                "IPAddress": "10.34.0.4",
+                "Name": "SouthCentralUS"
+            },
+            {
+                "IPAddress": "10.35.0.4",
+                "Name": "WestUS2"
+            }
+        ]
+    },
+    "DBConfig": {
+        "Url": "<Replace with InfluxDb Url>",
+        "Token": "<Replace with Authentication Token>",
+        "Organization": "perfinsights",
+        "Bucket": "performance"
+    },
+    "sample_variables": "grpLabel,Scenario,ConnectionType,BTPHost_Name,SCCHost_Name,S4HHost_Name,UserHost_Name,statistics-approuter-total,statistics-scc-total,statistics-total,statistics-icmtotal,ping-s4h"
+}

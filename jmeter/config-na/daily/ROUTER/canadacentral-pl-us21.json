@@ -1,0 +1,21 @@
+{
+    "Scenario": "ROUTER",
+    "ConnectionType": "privatelink",
+    "BTPHost": {
+        "Name": "us21",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "CanadaCentral",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "CanadaCentral",
+        "IPAddress": "20.104.99.158"
+    },
+    "HTTPRequest": {
+        "Url": "https://performance-test-btp-us-east-dev-router-pl.cfapps.us21.hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder/$count#1",
+        "Username": "<Replace with User Name>",
+        "Password": "<Replace with Password>"
+    }
+}

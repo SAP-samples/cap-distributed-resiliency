@@ -1,0 +1,3 @@
+0 9 * * *  cd / && ./run.sh -b Performance-Config -r https://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@github.com/SAP-samples/cap-distributed-resiliency.git -c config-ap/daily/GlobalTestConfig.json >> /var/log/cron.log
+0 15 * * * cd / && ./run.sh -b Performance-Config -r https://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@github.com/SAP-samples/cap-distributed-resiliency.git -c config-ap/daily/GlobalTestConfig.json >> /var/log/cron.log
+0 17 * * * cd / && ./run.sh -b Performance-Config -r https://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@github.com/SAP-samples/cap-distributed-resiliency.git -c config-ap/fiori/GlobalTestConfig.json >> /var/log/cron.log 

@@ -1,0 +1,21 @@
+{
+    "Scenario": "WORKZONE",
+    "ConnectionType": "scc",
+    "BTPHost": {
+        "Name": "ap12",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "KoreaCentral",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "KoreaCentral",
+        "IPAddress": "20.214.138.23"
+    },
+    "HTTPRequest": {
+        "Url": "https://performance-test-btp-us-east-tshenwfx-sapdelim-s4hcasccrt.launchpad.cfapps.us21.hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder/$count#1",
+        "Username": "<Replace with User Name>",
+        "Password": "<Replace with Password>"
+    }  
+}

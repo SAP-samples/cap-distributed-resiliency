@@ -1,0 +1,21 @@
+{
+    "Scenario": "WORKZONE",
+    "ConnectionType": "scc",
+    "BTPHost": {
+        "Name": "eu20",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "WestEurope",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "WestEurope",
+        "IPAddress": "52.174.124.79"
+    },
+    "HTTPRequest": {
+        "Url": "https://performance-test-btp-amsterdam-tdzzny2u-sapdelim-s4hcasccrt.launchpad.cfapps.eu20.hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder/$count#1",
+        "Username": "<Replace with User Name>",
+        "Password": "<Replace with Password>"
+    }  
+}

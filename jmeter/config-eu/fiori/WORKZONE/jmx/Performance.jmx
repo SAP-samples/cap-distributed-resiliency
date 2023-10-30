@@ -1,0 +1,3189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="ThreadGroup_Threads" elementType="Argument">
+            <stringProp name="Argument.name">ThreadGroup_Threads</stringProp>
+            <stringProp name="Argument.value">${__P(ThreadGroup_Threads,2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ThreadGroup_Rampup" elementType="Argument">
+            <stringProp name="Argument.name">ThreadGroup_Rampup</stringProp>
+            <stringProp name="Argument.value">${__P(ThreadGroup_Rampup,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ThreadGroup_Loop" elementType="Argument">
+            <stringProp name="Argument.name">ThreadGroup_Loop</stringProp>
+            <stringProp name="Argument.value">${__P(ThreadGroup_Loop,2)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="Scenario" elementType="Argument">
+            <stringProp name="Argument.name">Scenario</stringProp>
+            <stringProp name="Argument.value">${__P(Scenario,S4H)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="S4HHost_Name" elementType="Argument">
+            <stringProp name="Argument.name">S4HHost_Name</stringProp>
+            <stringProp name="Argument.value">${__P(S4HHost_Name,AMS)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="S4HHost_IPAddress" elementType="Argument">
+            <stringProp name="Argument.name">S4HHost_IPAddress</stringProp>
+            <stringProp name="Argument.value">${__P(S4HHost_IPAddress,sapes5.sapdevcenter.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BTPHost_Name" elementType="Argument">
+            <stringProp name="Argument.name">BTPHost_Name</stringProp>
+            <stringProp name="Argument.value">${__P(BTPHost_Name,AMS)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="BTPHost_IPAddress" elementType="Argument">
+            <stringProp name="Argument.name">BTPHost_IPAddress</stringProp>
+            <stringProp name="Argument.value">${__P(BTPHost_IPAddress,sapes5.sapdevcenter.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SCCHost_Name" elementType="Argument">
+            <stringProp name="Argument.name">SCCHost_Name</stringProp>
+            <stringProp name="Argument.value">${__P(SCCHost_Name,sapes5.sapdevcenter.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SCCHost_IPAddress" elementType="Argument">
+            <stringProp name="Argument.name">SCCHost_IPAddress</stringProp>
+            <stringProp name="Argument.value">${__P(SCCHost_IPAddress,sapes5.sapdevcenter.com)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="UserHost_Name" elementType="Argument">
+            <stringProp name="Argument.name">UserHost_Name</stringProp>
+            <stringProp name="Argument.value">${__P(UserHost_Name,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="UserHost_IPAddress" elementType="Argument">
+            <stringProp name="Argument.name">UserHost_IPAddress</stringProp>
+            <stringProp name="Argument.value">${__machineIP}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ExecutionDate" elementType="Argument">
+            <stringProp name="Argument.name">ExecutionDate</stringProp>
+            <stringProp name="Argument.value">${__P(ExecutionDate,2023-03-07T00:00:00.00Z)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WorkerHosts" elementType="Argument">
+            <stringProp name="Argument.name">WorkerHosts</stringProp>
+            <stringProp name="Argument.value">${__P(WorkerHosts,192.168.1.11=canadacentral)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ConnectionType" elementType="Argument">
+            <stringProp name="Argument.name">ConnectionType</stringProp>
+            <stringProp name="Argument.value">${__P(ConnectionType,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="HTTPRequest_Url" elementType="Argument">
+            <stringProp name="Argument.name">HTTPRequest_Url</stringProp>
+            <stringProp name="Argument.value">${__P(HTTPRequest_Url,https://performance-test-btp-us-east-tshenwfx-sapdelim-s4hcasccrt.launchpad.cfapps.us21.hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV/A_SalesOrder/$count#1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="HTTPRequest_Username" elementType="Argument">
+            <stringProp name="Argument.name">HTTPRequest_Username</stringProp>
+            <stringProp name="Argument.value">${__P(HTTPRequest_Username,Replace with User Name)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="HTTPRequest_Password" elementType="Argument">
+            <stringProp name="Argument.name">HTTPRequest_Password</stringProp>
+            <stringProp name="Argument.value">${__P(HTTPRequest_Password,Replace with Password)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WorkZone" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${ThreadGroup_Threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${ThreadGroup_Rampup}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Variables" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">def url = new URL(vars.get(&quot;HTTPRequest_Url&quot;));
+String host = url.getHost();
+String protocol = url.getProtocol();
+String port = url.getDefaultPort();
+String path= url.getPath();
+String query= url.query;
+String ref = url.getRef();
+
+vars.put(&quot;HTTPRequest_Host&quot;,host);
+vars.put(&quot;HTTPRequest_Protocol&quot;,protocol);
+vars.put(&quot;HTTPRequest_Port&quot;,port);
+vars.put(&quot;HTTPRequest_Path&quot;,path);
+vars.put(&quot;HTTPRequest_Query&quot;,query);
+vars.put(&quot;HTTPRequest_Ref&quot;,ref);
+
+vars.put(&quot;UserHost_Name&quot;,getUserHostName());
+
+String getUserHostName() {
+	String result = null;
+	String workerHosts = vars.get(&quot;WorkerHosts&quot;);
+	String userHostIP = vars.get(&quot;UserHost_IPAddress&quot;);
+	
+	if(workerHosts.contains(&quot;,&quot;)) { 
+		workerHosts.split(&quot;,&quot;).each { param -&gt;
+		   	String[] nameAndValue = param.split(&quot;=&quot;);
+		   	if(nameAndValue[0] == userHostIP) {
+				result = nameAndValue[1]
+		   	}
+		}
+	} else {
+		String[] nameAndValue = workerHosts.split(&quot;=&quot;);
+	   	
+			result = nameAndValue[1]
+	   	
+	}
+	return result 
+}</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">prev.setIgnore()</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Ping" enabled="false">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">vars.put(&quot;ping-s4h&quot;,&quot;&quot;+getPingTime(vars.get(&quot;S4HHost_IPAddress&quot;)));
+
+String getPingTime(String host) {
+     BufferedReader in = null;
+     String result = null;
+   	if(host.length()&gt;0) {
+	     String command = &quot;ping -n 1 -w 1000 &quot; + host; 
+		try {
+			Process p = Runtime.getRuntime().exec(command);
+			p.waitFor();
+			in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			StringBuilder output = new StringBuilder();
+			String line;
+			while( (line = in.readLine()) != null) {
+				  output.append(line);
+			}
+			String str = output.toString()
+			str = str.substring(str.indexOf(&quot;Average =&quot;) + 10, str.length()-2);
+			result = &quot;&quot;+Integer.valueOf(str);
+		}catch (Exception ex) {
+			//ex.pringStackTrace();
+			log.error(&quot;Failed to get Ping Time: &quot;+ ex.getMessage());
+		}finally {
+			in.close();		
+		}
+	}
+	return result;
+}
+
+
+</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">prev.setIgnore()</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+          <stringProp name="CookieManager.policy">netscape</stringProp>
+        </CookieManager>
+        <hashTree/>
+        <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="JSR223 Listener" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="script">if (sampleEvent.isTransactionSampleEvent()) {
+	sampleEvent.result.setDataType(&quot;TC&quot;)
+	def map = [ : ];
+	for(java.util.Map.Entry&lt;java.lang.String,java.lang.Object&gt; var in vars.entrySet()) {
+		String key = var.getKey();
+		if(key.startsWith(&quot;tc-&quot;)) {
+		    key = key.replace(&quot;tc-&quot;,&quot;&quot;); 
+		    map[key] = 0;
+		}
+	}
+	map.eachWithIndex { m, i -&gt;
+	  vars.put(m.key, &quot;&quot;+m.value);	
+	}
+} else {
+	def map = [ : ];
+	for(java.util.Map.Entry&lt;java.lang.String,java.lang.Object&gt; var in vars.entrySet()) {
+		String key = var.getKey();
+		if(key.startsWith(&quot;tc-&quot;)) {
+		    key = key.replace(&quot;tc-&quot;,&quot;&quot;); 
+		    map[key] = var.getValue().toString();
+		}
+	}
+	map.eachWithIndex { m, i -&gt;
+	  vars.put(m.key, &quot;&quot;+m.value);	
+	}
+}
+</stringProp>
+        </JSR223Listener>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="grpLabel" enabled="true">
+          <stringProp name="cacheKey">true</stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">vars.put(&quot;grpLabel&quot;,&quot;Login&quot;);</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">prev.setIgnore()</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Login" enabled="true">
+          <boolProp name="TransactionController.parent">false</boolProp>
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-0" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${HTTPRequest_Url}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                  <stringProp name="Header.value">navigate</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-Site" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                  <stringProp name="Header.value">none</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-User" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-User</stringProp>
+                  <stringProp name="Header.value">?1</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                  <stringProp name="Header.value">document</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="location Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">location</stringProp>
+              <stringProp name="RegexExtractor.regex">location=&quot;(.[^&quot;]+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="signature Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">signature</stringProp>
+              <stringProp name="RegexExtractor.regex">cookie=\&quot;signature=(.[^;]+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="fragmentAfterLogin Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">fragmentAfterLogin</stringProp>
+              <stringProp name="RegexExtractor.regex">cookie=\&quot;fragmentAfterLogin=(.[^;]+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+              <boolProp name="RegexExtractor.default_empty_value">true</boolProp>
+            </RegexExtractor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Create Cookie" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.CookieManager;
+import org.apache.jmeter.protocol.http.control.Cookie;
+import java.net.URLEncoder;
+
+String host = vars.get(&quot;HTTPRequest_Host&quot;);
+String protocol = vars.get(&quot;HTTPRequest_Protocol&quot;);
+String port = vars.get(&quot;HTTPRequest_Port&quot;);
+String path= vars.get(&quot;HTTPRequest_Path&quot;);
+String query= vars.get(&quot;HTTPRequest_Query&quot;);
+String ref =  vars.get(&quot;HTTPRequest_Ref&quot;); 
+
+def cm = sampler.getCookieManager();
+def signatureCookie = new Cookie(&quot;signature&quot;, vars.get(&quot;signature&quot;), host, &quot;/&quot;, true, 0);
+cm.add(signatureCookie );
+
+if(query) {
+	path = path+&quot;?&quot;+query;
+}
+String locationAfterLogin = URLEncoder.encode(path);
+def locationAfterLoginCookie = new Cookie(&quot;locationAfterLogin&quot;, locationAfterLogin, host, &quot;/&quot;, true, 0);
+cm.add(locationAfterLoginCookie);
+
+String fragmentAfterLogin = URLEncoder.encode(&quot;#&quot;+ref);
+
+
+def fragmentAfterLoginCookie = new Cookie(&quot;fragmentAfterLogin&quot;,fragmentAfterLogin, host, &quot;/&quot;, true, 0);
+cm.add(fragmentAfterLoginCookie);</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-1" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port">${authorizeLocationPort}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${location}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                  <stringProp name="Header.value">navigate</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-Site" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                  <stringProp name="Header.value">same-site</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                  <stringProp name="Header.value">document</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="idpHref Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">idpHref</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//a[text()=&apos;saptfe.accounts.ondemand.com&apos;]/@href</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-2" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${idpHref}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                  <stringProp name="Header.value">navigate</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">${idpHref}/</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-Site" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                  <stringProp name="Header.value">same-site</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-User" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-User</stringProp>
+                  <stringProp name="Header.value">?1</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                  <stringProp name="Header.value">document</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="authenticityToken Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">authenticityToken</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//input[@type=&apos;hidden&apos; and @name=&apos;authenticity_token&apos;]/@value</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="xsrfProtection Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">xsrfProtection</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//input[@type=&apos;hidden&apos; and @name=&apos;xsrfProtection&apos;]/@value</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="idpSSOEndpoint Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">idpSSOEndpoint</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//input[@type=&apos;hidden&apos; and @name=&apos;idpSSOEndpoint&apos;]/@value</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="sp Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">sp</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//input[@type=&apos;hidden&apos; and @name=&apos;sp&apos;]/@value</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="RelayState Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">RelayState</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//input[@type=&apos;hidden&apos; and @name=&apos;RelayState&apos;]/@value</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="spId Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">spId</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//input[@type=&apos;hidden&apos; and @name=&apos;spId&apos;]/@value</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="spName Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">spName</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//input[@type=&apos;hidden&apos; and @name=&apos;spName&apos;]/@value</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="targetUrl Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">targetUrl</stringProp>
+              <stringProp name="RegexExtractor.regex">targetUrl = &quot;(.[^&quot;]+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <XPathExtractor guiclass="XPathExtractorGui" testclass="XPathExtractor" testname="idpSSOEndpoint Extractor" enabled="true">
+              <stringProp name="XPathExtractor.default"></stringProp>
+              <stringProp name="XPathExtractor.refname">idpSSOEndpoint</stringProp>
+              <stringProp name="XPathExtractor.matchNumber">-1</stringProp>
+              <stringProp name="XPathExtractor.xpathQuery">//input[@type=&apos;hidden&apos; and @name=&apos;idpSSOEndpoint&apos;]/@value</stringProp>
+              <boolProp name="XPathExtractor.validate">false</boolProp>
+              <boolProp name="XPathExtractor.tolerant">true</boolProp>
+              <boolProp name="XPathExtractor.namespace">false</boolProp>
+            </XPathExtractor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login-3" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="utf8" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">utf8</stringProp>
+                  <stringProp name="Argument.value">✓</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="authenticity_token" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">authenticity_token</stringProp>
+                  <stringProp name="Argument.value">${authenticityToken}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="xsrfProtection" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">xsrfProtection</stringProp>
+                  <stringProp name="Argument.value">${xsrfProtection}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="method" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">method</stringProp>
+                  <stringProp name="Argument.value">GET</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="idpSSOEndpoint" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">idpSSOEndpoint</stringProp>
+                  <stringProp name="Argument.value">${idpSSOEndpoint}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="sp" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">sp</stringProp>
+                  <stringProp name="Argument.value">${sp}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="RelayState" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">RelayState</stringProp>
+                  <stringProp name="Argument.value">${RelayState}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="targetUrl" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">targetUrl</stringProp>
+                  <stringProp name="Argument.value">${targetUrl}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="sourceUrl" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">sourceUrl</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="org" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">org</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="spId" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">spId</stringProp>
+                  <stringProp name="Argument.value">${spId}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="spName" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">spName</stringProp>
+                  <stringProp name="Argument.value">${spName}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="mobileSSOToken" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">mobileSSOToken</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="tfaToken" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">tfaToken</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="css" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">css</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="passwordlessAuthnSelected" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">passwordlessAuthnSelected</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="j_username" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">j_username</stringProp>
+                  <stringProp name="Argument.value">${HTTPRequest_Username}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="j_password" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">j_password</stringProp>
+                  <stringProp name="Argument.value">${HTTPRequest_Password}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${idpSSOEndpoint}</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+            <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                  <stringProp name="Header.value">navigate</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">${idpSSOEndpoint}/</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-Site" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                  <stringProp name="Header.value">same-origin</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Origin" elementType="Header">
+                  <stringProp name="Header.name">Origin</stringProp>
+                  <stringProp name="Header.value">${idpSSOEndpoint}</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-User" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-User</stringProp>
+                  <stringProp name="Header.value">?1</stringProp>
+                </elementProp>
+                <elementProp name="Pragma" elementType="Header">
+                  <stringProp name="Header.name">Pragma</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                  <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+                <elementProp name="Cache-Control" elementType="Header">
+                  <stringProp name="Header.name">Cache-Control</stringProp>
+                  <stringProp name="Header.value">no-cache</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                </elementProp>
+                <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                  <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                  <stringProp name="Header.value">document</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Create Cookie" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.CookieManager;
+import org.apache.jmeter.protocol.http.control.Cookie;
+import java.net.URLEncoder;
+
+def cm = sampler.getCookieManager();
+def noOfCookies = cm.getCookieCount();
+String host = vars.get(&quot;HTTPRequest_Host&quot;);
+	
+def newCookies = []
+for (def i = 0; i &lt; noOfCookies; i++) {
+    Cookie cookie = cm.get(i);
+    if (cookie.getName() == &quot;JSESSIONID&quot;) {
+        newCookies.add(new Cookie(&quot;JSESSIONID&quot;, cookie.getValue(), &quot;hana.ondemand.com&quot;, &quot;/&quot;, true, 0));
+    }
+    if (cookie.getName() == &quot;__VCAP_ID__&quot; ) {
+        newCookies.add(new Cookie(&quot;__VCAP_ID__&quot;, cookie.getValue(), &quot;hana.ondemand.com&quot;, &quot;/&quot;, true, 0));
+    }
+}
+newCookies.eachWithIndex { item, index -&gt;
+  cm.add(item);
+}
+
+
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="grpLabel" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">vars.put(&quot;grpLabel&quot;,&quot;&quot;);</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Sampler>
+          <hashTree>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">prev.setIgnore()</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${ThreadGroup_Loop}</stringProp>
+        </LoopController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="grpLabel" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">vars.put(&quot;grpLabel&quot;,&quot;Manage Sales Orders&quot;);
+
+</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223Sampler>
+          <hashTree>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">prev.setIgnore()</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Manage Sales Orders" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Sales Orders-0" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="$expand" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">$expand</stringProp>
+                    <stringProp name="Argument.value">PersContainerItems</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-statistics" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">sap-statistics</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">${HTTPRequest_Port}</stringProp>
+              <stringProp name="HTTPSampler.protocol">${HTTPRequest_Protocol}</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/UI2/INTEROP/PersContainers%28category=%27P%27,id=%27sap.ushell.UserDefaultParameter%27%29</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${HTTPRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Expires" elementType="Header">
+                    <stringProp name="Header.name">Expires</stringProp>
+                    <stringProp name="Header.value">0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json, text/plain</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-language" elementType="Header">
+                    <stringProp name="Header.name">sap-language</stringProp>
+                    <stringProp name="Header.value">EN</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache, no-store, must-revalidate</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                  <elementProp name="x-csrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-csrf-token</stringProp>
+                    <stringProp name="Header.value">fetch</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">true</stringProp>
+                <stringProp name="RegexExtractor.refname">csrfToken</stringProp>
+                <stringProp name="RegexExtractor.regex">x-csrf-token:\s+(.+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Sales Orders-1" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="sap-language" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-language</stringProp>
+                    <stringProp name="Argument.value">EN</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-client" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-client</stringProp>
+                    <stringProp name="Argument.value">100</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-statistics" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">sap-statistics</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">${HTTPRequest_Port}</stringProp>
+              <stringProp name="HTTPSampler.protocol">${HTTPRequest_Protocol}</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName=&apos;SD_F1873_SO_WL_ANNO_MDL&apos;,Version=&apos;0001&apos;)/$value/</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Sales Orders-2" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="sap-client" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-client</stringProp>
+                    <stringProp name="Argument.value">100</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-value-list" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-value-list</stringProp>
+                    <stringProp name="Argument.value">none</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-language" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-language</stringProp>
+                    <stringProp name="Argument.value">EN</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-statistics" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">sap-statistics</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/SD_F1873_SO_WL_SRV/$metadata</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/xml</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">3.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Sales Orders-3" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="sap-statistics" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">sap-statistics</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/SD_F1873_SO_WL_SRV/?sap-client=100</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-message-scope" elementType="Header">
+                    <stringProp name="Header.name">sap-message-scope</stringProp>
+                    <stringProp name="Header.value">BusinessObject</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="x-csrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-csrf-token</stringProp>
+                    <stringProp name="Header.value">Fetch</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="DataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">DataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Sales Orders-4" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="sap-client" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-client</stringProp>
+                    <stringProp name="Argument.value">100</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-value-list" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-value-list</stringProp>
+                    <stringProp name="Argument.value">SD_F1873_SO_WL_SRV.C_SalesOrderWl_F1873Type%2FSoldToParty</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-language" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-language</stringProp>
+                    <stringProp name="Argument.value">EN</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-statistics" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">sap-statistics</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/SD_F1873_SO_WL_SRV/$metadata</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/xml</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">3.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Sales Orders-5" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&#xd;
+--batch_13a4-01f5-d8c7&#xd;
+Content-Type: application/http&#xd;
+Content-Transfer-Encoding: binary&#xd;
+&#xd;
+GET I_OverallSDProcessStatus?sap-client=100&amp;$skip=0&amp;$top=300&amp;$orderby=OverallSDProcessStatus_Text%20asc&amp;$select=OverallSDProcessStatus%2cOverallSDProcessStatus_Text%2cOverallSDProcessStatus_Text&amp;$inlinecount=allpages HTTP/1.1&#xd;
+sap-cancel-on-close: true&#xd;
+sap-contextid-accept: header&#xd;
+Accept: application/json&#xd;
+Accept-Language: en&#xd;
+DataServiceVersion: 2.0&#xd;
+MaxDataServiceVersion: 2.0&#xd;
+X-Requested-With: XMLHttpRequest&#xd;
+sap-message-scope: BusinessObject&#xd;
+&#xd;
+&#xd;
+--batch_13a4-01f5-d8c7--&#xd;
+</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/SD_F1873_SO_WL_SRV/$batch?sap-client=100&amp;sap-statistics=true</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">${HTTPRequest_Protocol}://${HTTPRequest_Host}</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">multipart/mixed</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="SAP-PASSPORT" elementType="Header">
+                    <stringProp name="Header.name">SAP-PASSPORT</stringProp>
+                    <stringProp name="Header.value">2A54482A0300E60000756E64657465726D696E6564202020202020202020202020202020202020202000005341505F4532455F54415F557365722020202020202020202020202020202020756E64657465726D696E65645F737461727475705F302020202020202020202020202020202020200005756E64657465726D696E65642020202020202020202020202020202020202020313433414637374130393843343836464239393641343946413839383545434320202000070DAD51A8120E4A508D4A5462AB16DCB90000000000000000000000000000000000000000000000E22A54482A</stringProp>
+                  </elementProp>
+                  <elementProp name="x-csrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-csrf-token</stringProp>
+                    <stringProp name="Header.value">${csrfToken}</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">multipart/mixed;boundary=batch_13a4-01f5-d8c7</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="DataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">DataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Sales Orders-6" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&#xd;
+--batch_c935-702e-5aa3&#xd;
+Content-Type: application/http&#xd;
+Content-Transfer-Encoding: binary&#xd;
+&#xd;
+GET C_SalesOrderWl_F1873?sap-client=100&amp;$skip=0&amp;$top=20&amp;$orderby=SalesOrderDate%20desc,SalesOrder%20desc&amp;$select=SalesOrder%2cSoldToParty%2cSoldToPartyName%2cPurchaseOrderByCustomer%2cRequestedDeliveryDate%2cto_OverallSDProcessStatus%2fOverallSDProcessStatus_Text%2cTotalNetAmount%2cTransactionCurrency%2cSalesOrderDate%2cDeliveryBlockReason%2cHeaderBillingBlockReason&amp;$expand=to_OverallSDProcessStatus&amp;$inlinecount=allpages HTTP/1.1&#xd;
+sap-cancel-on-close: true&#xd;
+sap-messages: transientOnly&#xd;
+sap-contextid-accept: header&#xd;
+Accept: application/json&#xd;
+Accept-Language: en&#xd;
+DataServiceVersion: 2.0&#xd;
+MaxDataServiceVersion: 2.0&#xd;
+X-Requested-With: XMLHttpRequest&#xd;
+x-csrf-token: ${csrfToken}&#xd;
+sap-message-scope: BusinessObject&#xd;
+&#xd;
+&#xd;
+--batch_c935-702e-5aa3--&#xd;
+</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/SD_F1873_SO_WL_SRV/$batch?sap-client=100&amp;sap-statistics=true</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">${HTTPRequest_Protocol}://${HTTPRequest_Host}</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">multipart/mixed</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="x-csrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-csrf-token</stringProp>
+                    <stringProp name="Header.value">${csrfToken}</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">multipart/mixed;boundary=batch_c935-702e-5aa3</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="DataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">DataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Sales Orders-7" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="sap-client" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-client</stringProp>
+                    <stringProp name="Argument.value">100</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="$skip" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">$skip</stringProp>
+                    <stringProp name="Argument.value">0</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="$top" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">$top</stringProp>
+                    <stringProp name="Argument.value">5000</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-client" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-client</stringProp>
+                    <stringProp name="Argument.value">100</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-language" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-language</stringProp>
+                    <stringProp name="Argument.value">EN</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-statistics" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">sap-statistics</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/SD_F1873_SO_WL_SRV/SAP__Currencies</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="SAP-PASSPORT" elementType="Header">
+                    <stringProp name="Header.name">SAP-PASSPORT</stringProp>
+                    <stringProp name="Header.value">2A54482A0300E600006375732E73642E73616C65736F72646572732E6D616E61676540302E302E302000005341505F4532455F54415F557365722020202020202020202020202020202020576C5F46313837332D2D6C6973745265706F727446696C7465722D62746E476F5F70726573735F3100056375732E73642E73616C65736F72646572732E6D616E61676540302E302E3020433038333144304434393933343232313830323636393736393943413537363120202000070DAD51A8120E4A508D4A5462AB16DCB90000000000000000000000000000000000000000000000E22A54482A</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="DataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">DataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="grpLabel" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">vars.put(&quot;grpLabel&quot;,&quot;&quot;);</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">prev.setIgnore()</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Manage Purchase Orders" enabled="false">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">false</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Purchase Orders-0" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="sap-language" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-language</stringProp>
+                    <stringProp name="Argument.value">EN</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-client" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">sap-client</stringProp>
+                    <stringProp name="Argument.value">100</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="sap-statistics" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">true</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    <stringProp name="Argument.name">sap-statistics</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName=&apos;MM_PUR_PO_MAINTAIN_V2_ANNO_MDL&apos;,Version=&apos;0001&apos;)/$value/</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">*/*</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Purchase Orders-1" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&#xd;
+--batch_87a7-d82c-eed2&#xd;
+Content-Type: application/http&#xd;
+Content-Transfer-Encoding: binary&#xd;
+&#xd;
+GET C_MM_CompanyCodeValueHelp?sap-client=100&amp;$filter=CompanyCode%20eq%20%271710%27 HTTP/1.1&#xd;
+sap-cancel-on-close: true&#xd;
+sap-contextid-accept: header&#xd;
+Accept: application/json&#xd;
+x-csrf-token: ${csrfToken}&#xd;
+Accept-Language: en&#xd;
+DataServiceVersion: 2.0&#xd;
+MaxDataServiceVersion: 2.0&#xd;
+X-Requested-With: XMLHttpRequest&#xd;
+sap-message-scope: BusinessObject&#xd;
+&#xd;
+&#xd;
+--batch_87a7-d82c-eed2--&#xd;
+</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/MM_PUR_PO_MAINT_V2_SRV/$batch?sap-client=100&amp;sap-statistics=true</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">${HTTPRequest_Protocol}://${HTTPRequest_Host}</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">multipart/mixed</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="x-csrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-csrf-token</stringProp>
+                    <stringProp name="Header.value">${csrfToken}</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">multipart/mixed;boundary=batch_87a7-d82c-eed2</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="DataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">DataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Purchase Orders-2" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&#xd;
+--batch_3496-e8b3-03b4&#xd;
+Content-Type: application/http&#xd;
+Content-Transfer-Encoding: binary&#xd;
+&#xd;
+GET I_PurchaseOrderStatusValueHelp?sap-client=100&amp;$skip=0&amp;$top=300&amp;$orderby=PurchasingDocumentStatusName%20asc&amp;$select=PurchasingDocumentStatus%2cPurchasingDocumentStatusName%2cPurchasingDocumentStatusName&amp;$inlinecount=allpages HTTP/1.1&#xd;
+sap-cancel-on-close: true&#xd;
+sap-contextid-accept: header&#xd;
+Accept: application/json&#xd;
+x-csrf-token: ${csrfToken}&#xd;
+Accept-Language: en&#xd;
+DataServiceVersion: 2.0&#xd;
+MaxDataServiceVersion: 2.0&#xd;
+X-Requested-With: XMLHttpRequest&#xd;
+sap-message-scope: BusinessObject&#xd;
+&#xd;
+&#xd;
+--batch_3496-e8b3-03b4--&#xd;
+</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/MM_PUR_PO_MAINT_V2_SRV/$batch?sap-client=100&amp;sap-statistics=true</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">${HTTPRequest_Protocol}://${HTTPRequest_Host}</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">multipart/mixed</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="SAP-PASSPORT" elementType="Header">
+                    <stringProp name="Header.name">SAP-PASSPORT</stringProp>
+                    <stringProp name="Header.value">2A54482A0300E600006375732E73642E73616C65736F72646572732E6D616E6167654031302E302E3200005341505F4532455F54415F557365722020202020202020202020202020202020756E646566696E65642020202020202020202020202020202020202020202020202020202020202000056375732E73642E73616C65736F72646572732E6D616E6167654031302E302E32423337333443453830313438343545453945343941303937323042344144413620202000070DAD51A8120E4A508D4A5462AB16DCB90000000000000000000000000000000000000000000000E22A54482A</stringProp>
+                  </elementProp>
+                  <elementProp name="x-csrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-csrf-token</stringProp>
+                    <stringProp name="Header.value">${csrfToken}</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">multipart/mixed;boundary=batch_3496-e8b3-03b4</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="DataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">DataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Purchase Orders-3" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&#xd;
+--batch_1c30-7f28-3f94&#xd;
+Content-Type: application/http&#xd;
+Content-Transfer-Encoding: binary&#xd;
+&#xd;
+GET C_PurchaseOrderTP?sap-client=100&amp;$skip=0&amp;$top=20&amp;$orderby=DraftUUID%20desc,PurchaseOrder%20desc&amp;$filter=CompanyCode%20eq%20%271710%27%20and%20(IsActiveEntity%20eq%20false%20or%20SiblingEntity/IsActiveEntity%20eq%20null)&amp;$select=PurchaseOrder%2cPurchaseOrderTypeName%2cIsAdvancedPurchaseOrder%2cSupplier%2cSupplierName%2cNumberOfOverduePurOrdItm%2cCompanyCode%2cCompanyCode_Text%2cPurchaseOrderStatus%2cPurchaseOrderStatusName%2cApprovalStatusName%2cApprovalStatus%2cApproverName%2cPurchaseOrderNumberOfApprovers%2cPurchaseOrderDate%2cPurchaseOrderNetAmount%2cDocumentCurrency%2cDraftUUID%2cIsActiveEntity%2cHasDraftEntity%2cHasActiveEntity%2cCancel_approval_ac%2cCopy_po_ac%2cDelete_mc%2cUpdate_mc%2cDraftAdministrativeData&amp;$expand=DraftAdministrativeData&amp;$inlinecount=allpages HTTP/1.1&#xd;
+sap-cancel-on-close: true&#xd;
+sap-messages: transientOnly&#xd;
+sap-contextid-accept: header&#xd;
+Accept: application/json&#xd;
+x-csrf-token: ${csrfToken}&#xd;
+Accept-Language: en&#xd;
+DataServiceVersion: 2.0&#xd;
+MaxDataServiceVersion: 2.0&#xd;
+X-Requested-With: XMLHttpRequest&#xd;
+sap-message-scope: BusinessObject&#xd;
+&#xd;
+&#xd;
+--batch_1c30-7f28-3f94--&#xd;
+</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/MM_PUR_PO_MAINT_V2_SRV/$batch?sap-client=100&amp;sap-statistics=true</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">${HTTPRequest_Protocol}://${HTTPRequest_Host}</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">multipart/mixed</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="x-csrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-csrf-token</stringProp>
+                    <stringProp name="Header.value">${csrfToken}</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">multipart/mixed;boundary=batch_1c30-7f28-3f94</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="DataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">DataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Manage Purchase Orders-4" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">&#xd;
+--batch_e070-1d07-9632&#xd;
+Content-Type: application/http&#xd;
+Content-Transfer-Encoding: binary&#xd;
+&#xd;
+GET C_PurchaseOrderNoteType?sap-client=100&amp;$filter=TechnicalObjectType%20eq%20&apos;EKKO&apos;%20and%20Language%20eq%20&apos;EN&apos;&amp;$orderby=DocumentText HTTP/1.1&#xd;
+sap-cancel-on-close: true&#xd;
+sap-contextid-accept: header&#xd;
+Accept: application/json&#xd;
+x-csrf-token: ${csrfToken}&#xd;
+Accept-Language: en&#xd;
+DataServiceVersion: 2.0&#xd;
+MaxDataServiceVersion: 2.0&#xd;
+X-Requested-With: XMLHttpRequest&#xd;
+sap-message-scope: BusinessObject&#xd;
+&#xd;
+&#xd;
+--batch_e070-1d07-9632--&#xd;
+</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${HTTPRequest_Host}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/sap/opu/odata/sap/MM_PUR_PO_MAINT_V2_SRV/$batch?sap-client=100&amp;sap-statistics=true</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout">3000</stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Sec-Fetch-Mode" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Mode</stringProp>
+                    <stringProp name="Header.value">cors</stringProp>
+                  </elementProp>
+                  <elementProp name="Referer" elementType="Header">
+                    <stringProp name="Header.name">Referer</stringProp>
+                    <stringProp name="Header.value">${LoginRequest_Url}</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Site" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Site</stringProp>
+                    <stringProp name="Header.value">same-origin</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">Accept-Language</stringProp>
+                    <stringProp name="Header.value">en</stringProp>
+                  </elementProp>
+                  <elementProp name="Origin" elementType="Header">
+                    <stringProp name="Header.name">Origin</stringProp>
+                    <stringProp name="Header.value">${HTTPRequest_Protocol}://${HTTPRequest_Host}</stringProp>
+                  </elementProp>
+                  <elementProp name="Pragma" elementType="Header">
+                    <stringProp name="Header.name">Pragma</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept" elementType="Header">
+                    <stringProp name="Header.name">Accept</stringProp>
+                    <stringProp name="Header.value">multipart/mixed</stringProp>
+                  </elementProp>
+                  <elementProp name="MaxDataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">MaxDataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-cancel-on-close" elementType="Header">
+                    <stringProp name="Header.name">sap-cancel-on-close</stringProp>
+                    <stringProp name="Header.value">true</stringProp>
+                  </elementProp>
+                  <elementProp name="sap-contextid-accept" elementType="Header">
+                    <stringProp name="Header.name">sap-contextid-accept</stringProp>
+                    <stringProp name="Header.value">header</stringProp>
+                  </elementProp>
+                  <elementProp name="X-Requested-With" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                  <elementProp name="x-csrf-token" elementType="Header">
+                    <stringProp name="Header.name">x-csrf-token</stringProp>
+                    <stringProp name="Header.value">${csrfToken}</stringProp>
+                  </elementProp>
+                  <elementProp name="Content-Type" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">multipart/mixed;boundary=batch_e070-1d07-9632</stringProp>
+                  </elementProp>
+                  <elementProp name="Cache-Control" elementType="Header">
+                    <stringProp name="Header.name">Cache-Control</stringProp>
+                    <stringProp name="Header.value">no-cache</stringProp>
+                  </elementProp>
+                  <elementProp name="DataServiceVersion" elementType="Header">
+                    <stringProp name="Header.name">DataServiceVersion</stringProp>
+                    <stringProp name="Header.value">2.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Encoding" elementType="Header">
+                    <stringProp name="Header.name">Accept-Encoding</stringProp>
+                    <stringProp name="Header.value">gzip, deflate, br</stringProp>
+                  </elementProp>
+                  <elementProp name="User-Agent" elementType="Header">
+                    <stringProp name="Header.name">User-Agent</stringProp>
+                    <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/114.0</stringProp>
+                  </elementProp>
+                  <elementProp name="Sec-Fetch-Dest" elementType="Header">
+                    <stringProp name="Header.name">Sec-Fetch-Dest</stringProp>
+                    <stringProp name="Header.value">empty</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Statistics Extract" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def headers = prev.getResponseHeaders().split(&apos;\n&apos;).inject([:]) { out, header -&gt;
+    if (header.contains(&apos;:&apos;)) {
+        header.split(&apos;:&apos;).with {
+            out[it[0].trim()] = it[1].trim()
+        }
+    }
+    out
+}
+headers.each { header -&gt;
+    if (header.getKey() == &apos;sap-statistics&apos;) {
+	   String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+		  String val = vars.get(&quot;statistics-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-&quot;+kv[0], kv[1])		  
+	   }
+    }
+
+     if (header.getKey() == &apos;sap-statistics-scc&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-scc-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-scc-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-scc-&quot;+kv[0], kv[1])
+	   }
+    }
+    if (header.getKey() == &apos;sap-statistics-approuter&apos;) {
+        String[] statistics = header.getValue().split(&quot;,&quot;);
+	   for (int i = 0; i &lt; statistics.length; i++) {
+   	   	  String[] kv = statistics[i].split(&quot;=&quot;)
+   	   	  String val = vars.get(&quot;statistics-approuter-&quot;+kv[0])
+		  if(val!=null) {
+			val =  Integer.parseInt(val)+Integer.parseInt(kv[1])
+			vars.put(&quot;tc-statistics-approuter-&quot;+kv[0],val)			
+		  }
+		  vars.put(&quot;statistics-approuter-&quot;+kv[0], kv[1])
+	   }
+    }    
+}</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,23 @@
+{
+
+    "Scenario": "S4H",
+    "ConnectionType": "public",
+    "BTPHost": {
+        "Name": "-",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "-",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "KoreaCentral",
+        "IPAddress": "20.214.138.23"
+    },
+    
+    "HTTPRequest": {
+        "Url":"https://20.214.138.23:44300/sap/bc/ui5_ui5/ui2/ushell/shells/abap/FioriLaunchpad.html?saml2=disabled&sap-client=100&sap-language=EN",
+        "Username": "BPINST",
+        "Password": "Replace with Password"
+    }
+}

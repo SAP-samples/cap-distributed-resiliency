@@ -1,0 +1,21 @@
+{
+    "Scenario": "CAP",
+    "ConnectionType": "public",
+    "BTPHost": {
+        "Name": "eu20",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "WestEurope",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "WestEurope",
+        "IPAddress": "52.174.124.79"
+    },
+    "HTTPRequest": {
+        "Url": "https://technical-field-enablement-performance-test-btp-amsterd1212c429.cfapps.eu20-001.hana.ondemand.com/odata/v4/SalesOrderService/SalesOrders",
+        "Username": "BPINST",
+        "Password": "Replace with Password"
+    }
+}

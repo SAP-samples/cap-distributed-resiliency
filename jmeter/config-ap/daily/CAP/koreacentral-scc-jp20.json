@@ -1,0 +1,21 @@
+{
+    "Scenario": "CAP",
+    "ConnectionType": "scc",
+    "BTPHost": {
+        "Name": "jp20",
+        "IPAddress": ""
+    },
+    "SCCHost": {
+        "Name": "KoreaCentral",
+        "IPAddress": ""
+    },
+    "S4HHost": {
+        "Name": "KoreaCentral",
+        "IPAddress": "20.214.138.23"
+    },
+    "HTTPRequest": {
+        "Url": "https://performance-test-btp-tokyo-dev-cap-scc.cfapps.jp20.hana.ondemand.com/odata/v4/SalesOrderService/SalesOrders",
+        "Username": "BPINST",
+        "Password": "Replace with Password"
+    }
+}
